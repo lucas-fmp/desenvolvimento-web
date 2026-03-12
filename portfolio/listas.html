@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Factory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="Eu.html">Quem sou eu?</a></li>
+            <li>
+                <a href="#">Aulas</a>
+                <ul class="submenu">
+                    <li><a href="apresentacao.html">Apresentação</a></li>
+                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Relatórios</a>
+                <ul class="submenu">
+                    <li><a href="apresentacao.html">Apresentação</a></li>
+                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contatos</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>ATHLETE FACTORY</h1>
+        <p>Academia de Alto Rendimento — Exclusiva para Atletas de Elite</p>
+    </header>
+    <main>
+        <section>
+            <h2>Sobre a Academia</h2>
+            <h3>Nossos Diferenciais</h3>
+            <ul>
+                <li>Estrutura de nível olímpico</li>
+                <li>Equipe multidisciplinar especializada</li>
+                <li>Nutrição esportiva personalizada</li>
+                <li>Psicologia do esporte integrada</li>
+            </ul>
+            <h3>Processo Seletivo</h3>
+            <ol>
+                <li>Preenchimento do formulário de inscrição</li>
+                <li>Análise do histórico esportivo</li>
+                <li>Avaliação física e biomecânica</li>
+                <li>Entrevista com a comissão técnica</li>
+                <li>Comunicado oficial de aprovação</li>
+            </ol>
+        </section>
+        <section>
+            <h2>Modalidades Disponíveis</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modalidade</th>
+                        <th>Nível</th>
+                        <th>Carga Semanal</th>
+                        <th>Vagas</th>
+                        <th>Investimento Mensal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atletismo</td>
+                        <td>Elite</td>
+                        <td>20h</td>
+                        <td>4</td>
+                        <td>R$ 1.800,00</td>
+                    </tr>
+                    <tr>
+                        <td>Natação</td>
+                        <td>Elite</td>
+                        <td>22h</td>
+                        <td>3</td>
+                        <td>R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                        <td>Musculação</td>
+                        <td>Pro</td>
+                        <td>18h</td>
+                        <td>6</td>
+                        <td>R$ 1.400,00</td>
+                    </tr>
+                    <tr>
+                        <td>Futebol</td>
+                        <td>Pro</td>
+                        <td>24h</td>
+                        <td>2</td>
+                        <td>R$ 1.600,00</td>
+                    </tr>
+                    <tr>
+                        <td>CrossFit</td>
+                        <td>Pro</td>
+                        <td>16h</td>
+                        <td>8</td>
+                        <td>R$ 1.300,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>Formulário de Inscrição</h2>
+            <form>
+                <h3>Dados Pessoais</h3> <label>Nome Completo</label><br>
+                <input type="text" placeholder="Seu nome completo"><br><br> <label>E-mail</label><br> <input
+                    type="email" placeholder="seu@email.com"><br><br> <label>Telefone</label><br> <input type="tel"
+                    placeholder="(61) 99999-9999"><br><br> <label>Data de Nascimento</label><br> <input
+                    type="date"><br><br> <label>Perfil / Website</label><br> <input type="url"
+                    placeholder="https://instagram.com/seu_perfil"><br><br>
+                <h3>Dados Físicos</h3> <label>Peso (kg)</label><br> <input type="number" min="40" max="200"
+                    placeholder="Ex: 80"><br><br> <label>Nível de Condicionamento</label><br> <input type="range"
+                    min="1" max="10" value="5"><br><br>
+                <h3>Disponibilidade</h3> <label>Horário Preferencial</label><br> <input type="time"><br><br>
+                <label>Início Previsto</label><br> <input type="month"><br><br> <label>Data e Hora da
+                    Avaliação</label><br> <input type="datetime-local"><br><br> <label>Semana de Referência</label><br>
+                <input type="week"><br><br>
+                <h3>Perfil Esportivo</h3> <label>Modalidade Principal</label><br>
+                <select>
+                    <option value="" disabled selected>Selecione...</option>
+                    <option>Atletismo</option>
+                    <option>Natação</option>
+                    <option>Musculação</option>
+                    <option>Futebol</option>
+                    <option>CrossFit</option>
+                </select><br><br> <label>Pesquisar Treinador</label><br> <input type="search"
+                    placeholder="Nome do treinador..."><br><br> <label>Gênero</label><br> <input type="radio"
+                    name="genero" value="m"> Masculino <input type="radio" name="genero" value="f"> Feminino<br><br>
+                <label>Interesses Complementares</label><br> <input type="checkbox"> Nutrição Esportiva <input
+                    type="checkbox"> Psicologia Esportiva <input type="checkbox"> Fisioterapia<br><br>
+                <label>Objetivos</label><br> <textarea rows="4" cols="50"
+                    placeholder="Descreva seus objetivos..."></textarea><br><br> <button type="submit">Enviar
+                    Inscrição</button> <button type="reset">Limpar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 Athlete Factory — Brasília, DF</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

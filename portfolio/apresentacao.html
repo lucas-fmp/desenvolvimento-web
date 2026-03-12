@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="Eu.html">Quem sou eu?</a></li>
+            <li>
+                <a href="#">Aulas</a>
+                <ul class="submenu">
+                    <li><a href="apresentacao.html">Apresentação</a></li>
+                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Relatórios</a>
+                <ul class="submenu">
+                    <li><a href="apresentacao.html">Apresentação</a></li>
+                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contatos</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Apresentação</h1>
+        <p>Abaixo você confere o conteúdo das aulas de apresentação.</p>
+    </header>
+    <main>
+        <section>
+            <h2>Conteúdo em breve</h2>
+            <p>A página está em construção.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Desenvolvido como atividade escolar. © 2026</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

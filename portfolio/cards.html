@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jefferson Moraes - Oficial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cards-bg">
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="Eu.html">Quem sou eu?</a></li>
+            <li>
+                <a href="#">Aulas</a>
+                <ul class="submenu">
+                    <li><a href="apresentacao.html">Apresentação</a></li>
+                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Relatórios</a>
+                <ul class="submenu">
+                    <li><a href="apresentacao.html">Apresentação</a></li>
+                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contatos</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Jefferson Moraes</h1>
+        <p>Página oficial do artista em ascensão. Ouça os últimos sucessos.</p>
+    </header>
+
+    <main>
+        <div class="cards-container">
+            <article class="card">
+                <h2>Coração Blindado</h2>
+                <p>"Se o meu coração fosse cego, não veria essa paixão..."</p>
+                <audio controls>
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                </audio>
+                <footer>
+                    Esta é uma simulação pedagógica. A escolha do artista ocorreu para homenagear uma estrela
+                    em ascensão e um dos mais escutados na internet. Todos os direitos das músicas pertencem aos seus
+                    respectivos autores.
+                </footer>
+            </article>
+
+            <article class="card">
+                <h2>Noite Fria</h2>
+                <p>"Sem você a noite é fria, não encontro a direção..."</p>
+                <audio controls>
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                </audio>
+                <footer>
+                    Esta é uma simulação pedagógica. A escolha do artista ocorreu para homenagear uma estrela
+                    em ascensão. Todos os direitos reservados.
+                </footer>
+            </article>
+
+            <article class="card">
+                <h2>Amor de Verão</h2>
+                <p>"Na areia do mar, nossos pés a dançar..."</p>
+                <audio controls>
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+                </audio>
+                <footer>
+                    Publicado em 05/03/2026
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>Desenvolvido para fins pedagógicos. © 2026 Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

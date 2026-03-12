@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfólio de Desenvolvimento Web - Projetos e habilidades adquiridas na disciplina.">
+    <title>Portfólio Desenvolvimento Web - Início</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="cards-bg">
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="Eu.html">Quem sou eu?</a></li>
+            <li>
+                <a href="#">Aulas</a>
+                <ul class="submenu">
+                    <li><a href="apresentacao.html">Apresentação</a></li>
+                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Relatórios</a>
+                <ul class="submenu">
+                    <li><a href="apresentacao.html">Apresentação</a></li>
+                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contatos</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Portfólio Desenvolvimento Web</h1>
+        <p>Apresentação estruturada das atividades e projetos realizados</p>
+    </header>
+
+    <main>
+        <div class="cards-container">
+            <article class="card">
+                <h2>Portfólio</h2>
+                <p>Este portfólio de Desenvolvimento Web foi construído ao longo da disciplina com o objetivo de reunir e apresentar, de forma organizada, os projetos e atividades desenvolvidos durante o semestre. A proposta é demonstrar, na prática, as habilidades adquiridas na criação de páginas web, evidenciando a evolução no uso das ferramentas e conceitos estudados.</p>
+                <footer>Apresentação</footer>
+            </article>
+
+            <article class="card">
+                <h2>Desenvolvimento</h2>
+                <p>Os trabalhos apresentados foram desenvolvidos em aula e posteriormente passaram por ajustes, melhorias e adequações, buscando aproximar o resultado final do nível de organização, estética e clareza esperado no mercado profissional.</p>
+                <footer>Processo evolutivo</footer>
+            </article>
+
+            <article class="card">
+                <h2>Objetivo</h2>
+                <p>Este espaço funciona como uma vitrine das capacidades desenvolvidas, reunindo páginas, experimentos e projetos que refletem o processo de aprendizagem e a aplicação prática dos conhecimentos em desenvolvimento web.</p>
+                <footer>Vitrine de projetos</footer>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>Desenvolvido para fins pedagógicos. © 2026 Todos os direitos reservados.</p>
+    </footer>    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
