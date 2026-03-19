@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .botao {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #botao_A {
+            background-color: red;
+        }
+
+        #botao_B {
+            background-color: green;
+        }
+
+        #botao_C {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="botao_A" class="botao">Botão A</button>
+    <button id="botao_B" class="botao">Botão B</button>
+    <button id="botao_C" class="botao">Botão C</button>
+
+    <script>
+        document.getElementById("botao_A").onclick = function () {
+            alert("Botão A clicado");
+        }
+        document.getElementById("botao_B").onclick = function () {
+            alert("Botão B clicado");
+        }
+        document.getElementById("botao_C").onclick = function () {
+            alert("Botão C clicado");
+        }
+    </script>
+</body>
+
+</html>
