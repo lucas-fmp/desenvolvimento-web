@@ -4,77 +4,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Portfólio de Desenvolvimento Web - Projetos e habilidades adquiridas na disciplina.">
-    <title>Portfólio Desenvolvimento Web - Início</title>
+    <meta name="description" content="Portfólio de Lucas Fernando Macedo Pereira - projetos desenvolvidos na disciplina de Desenvolvimento Web, CEUB, Ciência da Computação.">
+    <title>Lucas Fernando - Portfólio Web</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
-<body class="cards-bg">
+<body>
+
+    <!-- ===== NAVEGAÇÃO ===== -->
     <nav>
         <div class="hamburger" onclick="toggleMenu()">
             <span></span><span></span><span></span>
         </div>
         <ul class="menu" id="menu">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="Eu.html">Quem sou eu?</a></li>
+            <li><a href="#hero">Início</a></li>
+            <li><a href="#sobre">Sobre mim</a></li>
             <li>
-                <a href="#">Aulas</a>
+                <a href="#projetos">Projetos</a>
                 <ul class="submenu">
-                    <li><a href="apresentacao.html">Apresentação</a></li>
-                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
-                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
-                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                    <li><a href="aula-02-listas.html">Aula 2 – Listas, Tabelas e Formulários</a></li>
+                    <li><a href="aula-03-menu.html">Aula 3 – Menu, Imagens e Vídeos</a></li>
+                    <li><a href="aula-04-cards.html">Aula 4 – Cards e Player de Áudio</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#">Relatórios</a>
                 <ul class="submenu">
-                    <li><a href="apresentacao.html">Apresentação</a></li>
-                    <li><a href="listas.html">Listas, tabelas e formulários</a></li>
-                    <li><a href="menu.html">Menu, Classes, Imagens e vídeos</a></li>
-                    <li><a href="cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-01.pdf" target="_blank">Aula 1 – Introdução ao HTML</a></li>
+                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-02.pdf" target="_blank">Aula 2 – Listas, Tabelas e Formulários</a></li>
+                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-03.pdf" target="_blank">Aula 3 – Menu, Imagens e Vídeos</a></li>
                 </ul>
             </li>
-            <li><a href="#">Contatos</a></li>
+            <li><a href="https://github.com/lucas-fmp/desenvolvimento-web" target="_blank">GitHub ↗</a></li>
         </ul>
     </nav>
 
-    <header>
-        <h1>Portfólio Desenvolvimento Web</h1>
-        <p>Apresentação estruturada das atividades e projetos realizados</p>
+    <!-- ===== HERO ===== -->
+    <header id="hero">
+        <div class="hero-particles">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="hero-content">
+            <p class="hero-label">&lt;Desenvolvimento Web /&gt;</p>
+            <h1>Lucas Fernando</h1>
+            <p class="hero-sub">Ciência da Computação · 4º Semestre · CEUB</p>
+            <div class="hero-badges">
+                <span class="badge">HTML5</span>
+                <span class="badge">CSS3</span>
+                <span class="badge">Backend</span>
+                <span class="badge">Banco do Brasil</span>
+                <span class="badge">GitHub</span>
+            </div>
+        </div>
     </header>
 
     <main>
-        <div class="cards-container">
-            <article class="card">
-                <h2>Portfólio</h2>
-                <p>Este portfólio de Desenvolvimento Web foi construído ao longo da disciplina com o objetivo de reunir e apresentar, de forma organizada, os projetos e atividades desenvolvidos durante o semestre. A proposta é demonstrar, na prática, as habilidades adquiridas na criação de páginas web, evidenciando a evolução no uso das ferramentas e conceitos estudados.</p>
-                <footer>Apresentação</footer>
-            </article>
 
-            <article class="card">
-                <h2>Desenvolvimento</h2>
-                <p>Os trabalhos apresentados foram desenvolvidos em aula e posteriormente passaram por ajustes, melhorias e adequações, buscando aproximar o resultado final do nível de organização, estética e clareza esperado no mercado profissional.</p>
-                <footer>Processo evolutivo</footer>
-            </article>
+        <!-- ===== SOBRE MIM ===== -->
+        <section id="sobre" class="section-animated">
+            <h2>Quem sou eu?</h2>
+            <div class="cards-container">
+                <article class="card card-animated">
+                    <div class="card-icon">&#128105;&#8205;&#128187;</div>
+                    <h2>Lucas Fernando</h2>
+                    <p>Estudante de <strong>Ciência da Computação</strong> no CEUB, cursando o 4º semestre. Acredito que um bom profissional de tecnologia não deve se limitar a uma única stack ou especialidade - a curiosidade e a adaptabilidade são tão importantes quanto o domínio técnico.</p>
+                    <footer>Ciência da Computação · CEUB</footer>
+                </article>
+                <article class="card card-animated">
+                    <div class="card-icon">&#127970;</div>
+                    <h2>No mercado</h2>
+                    <p>Atuo como <strong>Assessor de TI no Banco do Brasil</strong>, com foco principal em desenvolvimento backend. O ambiente corporativo me deu perspectiva sobre como soluções de software funcionam em larga escala e sob restrições reais de negócio.</p>
+                    <footer>Backend · Banco do Brasil</footer>
+                </article>
+                <article class="card card-animated">
+                    <div class="card-icon">&#127918;</div>
+                    <h2>Interesses</h2>
+                    <p>Fora do trabalho, gosto de <strong>jogar</strong> e de construir sistemas do zero - aquela fase inicial onde tudo ainda é possibilidade. Tenho interesse em me tornar um profissional completo, explorando tanto o frontend quanto o backend, infraestrutura e além.</p>
+                    <footer>
+                        <a href="https://github.com/lucas-fmp" target="_blank" style="color:inherit;">&#128279; github.com/lucas-fmp</a>
+                    </footer>
+                </article>
+            </div>
+        </section>
 
-            <article class="card">
-                <h2>Objetivo</h2>
-                <p>Este espaço funciona como uma vitrine das capacidades desenvolvidas, reunindo páginas, experimentos e projetos que refletem o processo de aprendizagem e a aplicação prática dos conhecimentos em desenvolvimento web.</p>
-                <footer>Vitrine de projetos</footer>
-            </article>
-        </div>
+        <!-- ===== PROJETOS ===== -->
+        <section id="projetos" class="section-animated">
+            <h2>Projetos por Aula</h2>
+            <p class="section-desc">Cada card abaixo apresenta a página ao vivo e o código-fonte completo hospedado no GitHub.</p>
+            <div class="projects-grid">
+
+                <article class="project-card card-animated">
+                    <div class="project-number">01</div>
+                    <h3>Apresentação</h3>
+                    <p>Primeira página construída na disciplina. Apresenta estrutura básica HTML com listas, parágrafos, títulos e formatação inicial.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">Estrutura</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="aula-01-apresentacao.html" class="btn-primary">Ver Projeto</a>
+                        <a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/portfolio/aula-01-apresentacao.html" target="_blank" class="btn-secondary">Código-Fonte</a>
+                    </div>
+                </article>
+
+                <article class="project-card card-animated">
+                    <div class="project-number">02</div>
+                    <h3>Listas, Tabelas e Formulários</h3>
+                    <p>Simulação de academia de alto rendimento com listas ordenadas e não ordenadas, tabelas de dados e formulário de inscrição.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Formulários</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="aula-02-listas.html" class="btn-primary">Ver Projeto</a>
+                        <a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/portfolio/aula-02-listas.html" target="_blank" class="btn-secondary">Código-Fonte</a>
+                    </div>
+                </article>
+
+                <article class="project-card card-animated">
+                    <div class="project-number">03</div>
+                    <h3>Menu, Classes, Imagens e Vídeos</h3>
+                    <p>Academia de Ciências Físicas com menu de navegação horizontal, tabela de 10 conceitos de física, imagens e vídeos do YouTube incorporados.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Menu</span>
+                        <span class="tag">iframe</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="aula-03-menu.html" class="btn-primary">Ver Projeto</a>
+                        <a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/portfolio/aula-03-menu.html" target="_blank" class="btn-secondary">Código-Fonte</a>
+                    </div>
+                </article>
+
+                <article class="project-card card-animated">
+                    <div class="project-number">04</div>
+                    <h3>Cards, Player de Áudio e Plano de Fundo</h3>
+                    <p>Landing page do cantor Jefferson Moraes com cards musicais, player de áudio nativo, gradiente de fundo e HTML semântico.</p>
+                    <div class="project-tags">
+                        <span class="tag">Semântico</span>
+                        <span class="tag">Flexbox</span>
+                        <span class="tag">Audio</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="aula-04-cards.html" class="btn-primary">Ver Projeto</a>
+                        <a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/portfolio/aula-04-cards.html" target="_blank" class="btn-secondary">Código-Fonte</a>
+                    </div>
+                </article>
+
+                <article class="project-card card-animated">
+                    <div class="project-number">05</div>
+                    <h3>Hub e Publicação Online</h3>
+                    <p>Esta página: portfólio centralizado com menu de navegação, linkagem de todos os projetos e publicação na plataforma Netlify.</p>
+                    <div class="project-tags">
+                        <span class="tag">Netlify</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Hub</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="index.html" class="btn-primary">Ver Projeto</a>
+                        <a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/portfolio/index.html" target="_blank" class="btn-secondary">Código-Fonte</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ===== REPOSITÓRIO ===== -->
+        <section id="repositorio" class="section-animated repo-section">
+            <h2>Repositório Completo</h2>
+            <p>Todo o código-fonte deste portfólio está disponível publicamente no GitHub, permitindo acesso completo a todos os arquivos, histórico de versões e estrutura do projeto.</p>
+            <a href="https://github.com/lucas-fmp/desenvolvimento-web" target="_blank" class="btn-repo">
+                &#128279; Acessar repositório no GitHub
+            </a>
+        </section>
+
     </main>
 
-    <footer>
-        <p>Desenvolvido para fins pedagógicos. © 2026 Todos os direitos reservados.</p>
-    </footer>    <script>
+    <footer id="rodape-principal">
+        <p>Lucas Fernando Macedo Pereira · Ciência da Computação · CEUB, 2026</p>
+        <p>Disciplina de Desenvolvimento Web - Prof. Msc. Wendell Cruzeiro</p>
+        <p>Código disponível em <a href="https://github.com/lucas-fmp/desenvolvimento-web" target="_blank">github.com/lucas-fmp/desenvolvimento-web</a></p>
+    </footer>
+
+    <script>
         function toggleMenu() {
             document.getElementById('menu').classList.toggle('active');
         }
     </script>
-</body>
 
+</body>
 </html>
