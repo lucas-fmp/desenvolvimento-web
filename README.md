@@ -83,7 +83,7 @@ Criação da página Hub (`index.html`) centralizando o portfólio completo. Lin
 |---|---|
 | 📄 Código-fonte | [portfolio/index.html](portfolio/index.html) |
 | 🌐 Página ao vivo | [22453040.netlify.app](https://22453040.netlify.app) |
-| 📑 Relatório | *(em andamento)* |
+| 📑 Relatório | [relatorios/relatorio-05.pdf](relatorios/relatorio-05.pdf) |
 
 ---
 
@@ -95,7 +95,7 @@ Construção de componentes interativos: botões estilizados, alertas e página 
 | 📄 Botões | [portfolio/aula-06-botao.html](portfolio/aula-06-botao.html) |
 | 📄 Login | [portfolio/aula-06-login.html](portfolio/aula-06-login.html) |
 | 🌐 Página ao vivo | [22453040.netlify.app/aula-06-botao.html](https://22453040.netlify.app/aula-06-botao.html) |
-| 📑 Relatório | *(a realizar)* |
+| 📑 Relatório | [relatorios/relatorio-06.pdf](relatorios/relatorio-06.pdf) |
 
 ---
 

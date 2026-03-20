@@ -8,7 +8,7 @@ Relatórios semanais das atividades práticas da disciplina, formatados conforme
 | Aula 2 | Listas, Tabelas e Formulários | [relatorio-02.pdf](relatorio-02.pdf) |
 | Aula 3 | Menu, Classes, Imagens e Vídeos | [relatorio-03.pdf](relatorio-03.pdf) |
 | Aula 4 | Cards, Player de Áudio e Plano de Fundo | *(não realizado)* |
-| Aula 5 | Publicação Online | *(em andamento)* |
-| Aula 6 | Botões, Alertas e Tela de Login | *(a realizar)* |
+| Aula 5 | Publicação Online | [relatorio-05.pdf](relatorio-05.pdf) |
+| Aula 6 | Botões, Alertas e Tela de Login | [relatorio-06.pdf](relatorio-06.pdf) |
 
 > Os PDFs podem ser visualizados diretamente no GitHub clicando sobre cada arquivo.
