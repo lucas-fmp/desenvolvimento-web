@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Periódica - Lucas Fernando</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .wrapper {
+            margin-top: 60px;
+            padding: 20px;
+            min-height: calc(100vh - 150px);
+        }
+
+        .element-cell {
+            font-size: 0.60rem;
+            padding: 0.2rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            height: 60px;
+            text-align: center;
+            color: #fff;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s;
+            cursor: pointer;
+            word-break: break-word;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .element-cell:hover {
+            transform: scale(1.2);
+            z-index: 10;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .element-cell strong {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .element-cell span {
+            line-height: 1;
+            margin-top: 1px;
+        }
+
+        .bg-verde {
+            background-color: #649b4b;
+        }
+
+        /* Verde: Claro, vá em frente. */
+        .bg-azul {
+            background-color: #65a5b5;
+        }
+
+        /* Azul: Talvez não seja uma boa ideia */
+        .bg-laranjado {
+            background-color: #d15878;
+        }
+
+        /* Rosa/Vermelho (Laranjado): Por favor, não faça isso */
+        .bg-roxo {
+            background-color: #765ea1;
+        }
+
+        /* Roxo: Nós vemos na outra vida */
+
+        .empty-cell {
+            height: 60px;
+        }
+
+        .tabela-container {
+            overflow-x: auto;
+            padding-bottom: 30px;
+        }
+
+        .tabela-grid {
+            min-width: 950px;
+        }
+
+        .col-element {
+            flex: 1 0 0%;
+            padding: 2px;
+        }
+
+        .legend-title {
+            color: #1a1a2e;
+            font-family: inherit;
+            font-weight: 800;
+            font-size: 2.5rem;
+        }
+
+        .legend-subtitle {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVEGAÇÃO ===== -->
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html#sobre">Sobre mim</a></li>
+            <li>
+                <a href="index.html#projetos">Projetos</a>
+                <ul class="submenu">
+                    <li><a href="aula-02-listas.html">Aula 2 - Listas, Tabelas e Formulários</a></li>
+                    <li><a href="aula-03-menu.html">Aula 3 - Menu, Imagens e Vídeos</a></li>
+                    <li><a href="aula-04-cards.html">Aula 4 - Cards e Player de Áudio</a></li>
+                    <li><a href="index.html">Aula 5 - Hub e Publicação Online</a></li>
+                    <li><a href="aula-06-login.html">Aula 6 - Tela de Login</a></li>
+                    <li><a href="aula-08-tabela-periodica.html">Aula 8 - Tabela Periódica</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Relatórios</a>
+                <ul class="submenu">
+                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-01.pdf"
+                            target="_blank">Aula 1 - Introdução ao HTML</a></li>
+                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-02.pdf"
+                            target="_blank">Aula 2 - Listas, Tabelas e Formulários</a></li>
+                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-03.pdf"
+                            target="_blank">Aula 3 - Menu, Imagens e Vídeos</a></li>
+                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-05.pdf"
+                            target="_blank">Aula 5 - Publicação Online</a></li>
+                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-06.pdf"
+                            target="_blank">Aula 6 - Botões, Alertas e Login</a></li>
+                </ul>
+            </li>
+            <li><a href="https://github.com/lucas-fmp/desenvolvimento-web" target="_blank">GitHub ↗</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== CONTEÚDO TABELA PERIÓDICA ===== -->
+    <div class="wrapper">
+        <h1 class="text-center mb-1 legend-title">Posso lamber?</h1>
+        <p class="text-center legend-subtitle mb-4">Tabela Periódica interativa - Classificação</p>
+
+        <div class="container mb-4">
+            <div class="row text-center g-2 justify-content-center">
+                <div class="col-md-3">
+                    <div class="p-2 bg-verde rounded shadow-sm fw-bold text-white">Claro, vá em frente.</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-2 bg-azul rounded shadow-sm fw-bold text-white">Talvez não seja uma boa ideia</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-2 bg-laranjado rounded shadow-sm fw-bold text-white">Por favor, não faça isso</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-2 bg-roxo rounded shadow-sm fw-bold text-white">Nós vemos na outra vida</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid tabela-container">
+            <div class="tabela-grid mx-auto">
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Hidrogênio"><strong>H</strong><span>Hidrogênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Hélio"><strong>He</strong><span>Hélio</span></div>
+                    </div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element">
+                        <div class="element-cell bg-azul" title="Lítio"><strong>Li</strong><span>Lítio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Berílio"><strong>Be</strong><span>Berílio</span>
+                        </div>
+                    </div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Boro"><strong>B</strong><span>Boro</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Carbono"><strong>C</strong><span>Carbono</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Nitrogênio"><strong>N</strong><span>Nitrogênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Oxigênio"><strong>O</strong><span>Oxigênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Flúor"><strong>F</strong><span>Flúor</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Neônio"><strong>Ne</strong><span>Neônio</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Sódio"><strong>Na</strong><span>Sódio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Magnésio"><strong>Mg</strong><span>Magnésio</span>
+                        </div>
+                    </div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Alumínio"><strong>Al</strong><span>Alumínio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Silício"><strong>Si</strong><span>Silício</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-azul" title="Fósforo"><strong>P</strong><span>Fósforo</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Enxofre"><strong>S</strong><span>Enxofre</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Cloro"><strong>Cl</strong><span>Cloro</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Argônio"><strong>Ar</strong><span>Argônio</span></div>
+                    </div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Potássio"><strong>K</strong><span>Potássio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Cálcio"><strong>Ca</strong><span>Cálcio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Escândio"><strong>Sc</strong><span>Escândio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Titânio"><strong>Ti</strong><span>Titânio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Vanádio"><strong>V</strong><span>Vanádio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Crômio"><strong>Cr</strong><span>Crômio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Manganês"><strong>Mn</strong><span>Manganês</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Ferro"><strong>Fe</strong><span>Ferro</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Cobalto"><strong>Co</strong><span>Cobalto</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Níquel"><strong>Ni</strong><span>Níquel</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Cobre"><strong>Cu</strong><span>Cobre</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Zinco"><strong>Zn</strong><span>Zinco</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Gálio"><strong>Ga</strong><span>Gálio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Germânio"><strong>Ge</strong><span>Germânio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Arsênio"><strong>As</strong><span>Arsênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-azul" title="Selênio"><strong>Se</strong><span>Selênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Bromo"><strong>Br</strong><span>Bromo</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Criptônio"><strong>Kr</strong><span>Criptônio</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Rubídio"><strong>Rb</strong><span>Rubídio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Estrôncio">
+                            <strong>Sr</strong><span>Estrôncio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Ítrio"><strong>Y</strong><span>Ítrio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Zircônio"><strong>Zr</strong><span>Zircônio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Nióbio"><strong>Nb</strong><span>Nióbio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Molibdênio"><strong>Mo</strong><span>Molibdênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Tecnécio"><strong>Tc</strong><span>Tecnécio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Rutênio"><strong>Ru</strong><span>Rutênio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Ródio"><strong>Rh</strong><span>Ródio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Paládio"><strong>Pd</strong><span>Paládio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Prata"><strong>Ag</strong><span>Prata</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Cádmio"><strong>Cd</strong><span>Cádmio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Índio"><strong>In</strong><span>Índio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Estanho"><strong>Sn</strong><span>Estanho</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-azul" title="Antimônio"><strong>Sb</strong><span>Antimônio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-azul" title="Telúrio"><strong>Te</strong><span>Telúrio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Iodo"><strong>I</strong><span>Iodo</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Xenônio"><strong>Xe</strong><span>Xenônio</span></div>
+                    </div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Césio"><strong>Cs</strong><span>Césio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Bário"><strong>Ba</strong><span>Bário</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Lantânio"><strong>La</strong><span>Lantânio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Háfnio"><strong>Hf</strong><span>Háfnio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Tântalo"><strong>Ta</strong><span>Tântalo</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Tungstênio"><strong>W</strong><span>Tungstênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Rênio"><strong>Re</strong><span>Rênio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-azul" title="Ósmio"><strong>Os</strong><span>Ósmio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Irídio"><strong>Ir</strong><span>Irídio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Platina"><strong>Pt</strong><span>Platina</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Ouro"><strong>Au</strong><span>Ouro</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Mercúrio"><strong>Hg</strong><span>Mercúrio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-laranjado" title="Tálio"><strong>Tl</strong><span>Tálio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-azul" title="Chumbo"><strong>Pb</strong><span>Chumbo</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Bismuto"><strong>Bi</strong><span>Bismuto</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Polônio"><strong>Po</strong><span>Polônio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Astato"><strong>At</strong><span>Astato</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Radônio"><strong>Rn</strong><span>Radônio</span></div>
+                    </div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Frâncio"><strong>Fr</strong><span>Frâncio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-verde" title="Rádio"><strong>Ra</strong><span>Rádio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Actínio"><strong>Ac</strong><span>Actínio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Rutherfordio">
+                            <strong>Rf</strong><span>Rutherfordio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Dúbnio"><strong>Db</strong><span>Dúbnio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Seabórgio"><strong>Sg</strong><span>Seabórgio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Bóhrio"><strong>Bh</strong><span>Bóhrio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Hássio"><strong>Hs</strong><span>Hássio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Meitnério"><strong>Mt</strong><span>Meitnério</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Darmstadtio">
+                            <strong>Ds</strong><span>Darmstadtio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Roentgênio"><strong>Rg</strong><span>Roentgênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Copernício"><strong>Cn</strong><span>Copernício</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Nihônio"><strong>Nh</strong><span>Nihônio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Fleróvio"><strong>Fl</strong><span>Fleróvio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Moscóvio"><strong>Mc</strong><span>Moscóvio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Livermório"><strong>Lv</strong><span>Livermório</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Tennesso"><strong>Ts</strong><span>Tennesso</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Oganessão"><strong>Og</strong><span>Oganessão</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Cério"><strong>Ce</strong><span>Cério</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Praseodímio">
+                            <strong>Pr</strong><span>Praseodímio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Neodímio"><strong>Nd</strong><span>Neodímio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Promécio"><strong>Pm</strong><span>Promécio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Samário"><strong>Sm</strong><span>Samário</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Európio"><strong>Eu</strong><span>Európio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Gadolínio"><strong>Gd</strong><span>Gadolínio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Térbio"><strong>Tb</strong><span>Térbio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Disprósio"><strong>Dy</strong><span>Disprósio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Hólmio"><strong>Ho</strong><span>Hólmio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Érbio"><strong>Er</strong><span>Érbio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Túlio"><strong>Tm</strong><span>Túlio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Itérbio"><strong>Yb</strong><span>Itérbio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Lutécio"><strong>Lu</strong><span>Lutécio</span></div>
+                    </div>
+                    <div class="col-element empty-cell"></div>
+                </div>
+                <div class="row flex-nowrap g-0">
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element empty-cell"></div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Tório"><strong>Th</strong><span>Tório</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Protactínio">
+                            <strong>Pa</strong><span>Protactínio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Urânio"><strong>U</strong><span>Urânio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Netúnio"><strong>Np</strong><span>Netúnio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Plutônio"><strong>Pu</strong><span>Plutônio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Amerício"><strong>Am</strong><span>Amerício</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Cúrio"><strong>Cm</strong><span>Cúrio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Berquélio"><strong>Bk</strong><span>Berquélio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Califórnio"><strong>Cf</strong><span>Califórnio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Einstênio"><strong>Es</strong><span>Einstênio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Férmio"><strong>Fm</strong><span>Férmio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Mendelévio"><strong>Md</strong><span>Mendelévio</span>
+                        </div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Nobélio"><strong>No</strong><span>Nobélio</span></div>
+                    </div>
+                    <div class="col-element">
+                        <div class="element-cell bg-roxo" title="Laurêncio"><strong>Lr</strong><span>Laurêncio</span>
+                        </div>
+                    </div>
+                    <div class="col-element empty-cell"></div>
+                </div>
+
+            </div>
+        </div>
+    </div> <!-- Fim wrapper -->
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer id="rodape-principal">
+        <p>Lucas Fernando Macedo Pereira · Ciência da Computação · CEUB, 2026</p>
+        <p>Disciplina de Desenvolvimento Web - Prof. Msc. Wendell Cruzeiro</p>
+        <p>Código disponível em <a href="https://github.com/lucas-fmp/desenvolvimento-web"
+                target="_blank">github.com/lucas-fmp/desenvolvimento-web</a></p>
+    </footer>
+
+    <!-- Bootstrap Bundle JS (opcional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
