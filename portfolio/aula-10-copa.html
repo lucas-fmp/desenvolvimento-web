@@ -1,0 +1,2610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANINI - Copa do Mundo 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            position: relative;
+            background-color: #f8f9fa;
+        }
+
+        .panini-header {
+            background-color: #8a1538;
+            color: #fff;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid #d4af37;
+        }
+
+        .panini-header h1 {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #scrollspy-menu {
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            align-self: start;
+            background-color: #001f4d;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            font-size: 0.9rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #scrollspy-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        #scrollspy-menu::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #scrollspy-menu::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        #scrollspy-menu {
+            display: block;
+        }
+
+        #scrollspy-menu h5 {
+            color: #ffffff;
+            font-weight: bold;
+            border-bottom: 2px solid #8a1538;
+            padding-bottom: 10px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        #scrollspy-menu .nav-link {
+            display: block;
+            width: 100%;
+            color: #d1d5db;
+            font-weight: 500;
+            padding: 5px 8px;
+            border-radius: 5px;
+            margin-bottom: 1px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            white-space: normal;
+            line-height: 1.4;
+            text-decoration: none;
+        }
+
+        #scrollspy-menu .nav-link:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        #scrollspy-menu .nav-link.active {
+            background-color: #8a1538;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        #scrollspy-menu .grupo-link {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            padding: 6px 8px;
+            margin-top: 6px;
+        }
+
+        #scrollspy-menu .team-link {
+            color: #b0bec5;
+            font-size: 0.82rem;
+            padding: 3px 8px 3px 20px;
+        }
+
+
+
+        .grupo-section {
+            scroll-margin-top: 100px;
+            background: #fff;
+            border: 2px solid #002366;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .selecao-anchor {
+            scroll-margin-top: 110px;
+        }
+
+        .grupo-title {
+            background-color: #002366;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .selecao-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #fcfcfc;
+            height: 100%;
+        }
+
+        .selecao-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #8a1538;
+            padding-bottom: 10px;
+        }
+
+        .selecao-header img {
+            width: 40px;
+            height: auto;
+            margin-right: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .selecao-header h4 {
+            margin: 0;
+            color: #002366;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .escalacao-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .escalacao-list li {
+            width: 100%;
+            padding: 3px 0;
+            font-size: 0.9rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .escalacao-list li {
+                width: 33.333%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .escalacao-list li {
+                width: 25%;
+            }
+        }
+
+        .camisa {
+            display: inline-block;
+            min-width: 25px;
+            height: 25px;
+            background-color: #002366;
+            color: #fff;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 50%;
+            margin-right: 8px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .bracket-wrapper {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .bracket {
+            display: flex;
+            justify-content: space-between;
+            min-width: 1400px;
+            gap: 15px;
+        }
+
+        .bracket-col {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .match-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f8f9fa;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            padding: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .match-team {
+            display: flex;
+            align-items: center;
+            padding: 4px;
+        }
+
+        .match-team img {
+            width: 20px;
+            margin-right: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .match-team span {
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        hr.m-0 {
+            border-top: 1px solid #ccc;
+            margin: 4px 0 !important;
+        }
+
+        .final-box {
+            border: 2px solid #d4af37;
+            background: #fff9c4;
+            transform: scale(1.05);
+            padding: 10px;
+        }
+
+        .col-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #8a1538;
+            font-size: 0.95rem;
+            background: #eee;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    </style>
+    <style>
+        html {
+            scroll-padding-top: 120px;
+        }
+
+        .escalacao-list {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+            gap: 10px !important;
+            list-style: none !important;
+            padding: 0 !important;
+        }
+
+        .escalacao-list li {
+            display: flex !important;
+            align-items: center !important;
+            font-size: 0.95rem !important;
+        }
+
+        .camisa {
+            min-width: 28px !important;
+            height: 28px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin-right: 10px !important;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#scrollspy-menu" tabindex="0">
+    <nav style="position: sticky; top: 0; z-index: 1050;">
+        <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html#sobre">Sobre mim</a></li>
+            <li>
+                <a href="index.html#projetos">Projetos</a>
+                <ul class="submenu">
+                    <li><a href="aula-02-listas.html">Aula 2</a></li>
+                    <li><a href="aula-03-menu.html">Aula 3</a></li>
+                    <li><a href="aula-04-cards.html">Aula 4</a></li>
+                    <li><a href="index.html">Aula 5</a></li>
+                    <li><a href="aula-06-login.html">Aula 6</a></li>
+                    <li><a href="aula-08-tabela-periodica.html">Aula 8</a></li>
+                    <li><a href="aula-09-fotografia.html">Aula 9</a></li>
+                    <li><a href="aula-10-copa.html">Aula 10 - Copa do Mundo</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Relatórios</a></li>
+            <li><a href="https://github.com/lucas-fmp/desenvolvimento-web" target="_blank">GitHub ↗</a></li>
+        </ul>
+    </nav>
+    <header class="panini-header">
+        <div class="container">
+            <h1>Copa do Mundo 2026</h1>
+            <p class="lead">Simulação Oficial das 48 Seleções e Chaveamento Final</p>
+        </div>
+    </header>
+    <main class="container-fluid px-4">
+        <div class="row">
+            <div class="col-lg-3 d-none d-lg-block">
+                <nav id="scrollspy-menu">
+                    <h5 class="mb-3">Fase de Grupos</h5>
+
+                    <a class="nav-link grupo-link" href="#grupo-a">▸ Grupo A</a>
+                    <a class="nav-link team-link" href="#team-a-eua">EUA</a>
+                    <a class="nav-link team-link" href="#team-a-alemanha">Alemanha</a>
+                    <a class="nav-link team-link" href="#team-a-japão">Japão</a>
+                    <a class="nav-link team-link" href="#team-a-panamá">Panamá</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-b">▸ Grupo B</a>
+                    <a class="nav-link team-link" href="#team-b-méxico">México</a>
+                    <a class="nav-link team-link" href="#team-b-holanda">Holanda</a>
+                    <a class="nav-link team-link" href="#team-b-senegal">Senegal</a>
+                    <a class="nav-link team-link" href="#team-b-iraque">Iraque</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-c">▸ Grupo C</a>
+                    <a class="nav-link team-link" href="#team-c-canadá">Canadá</a>
+                    <a class="nav-link team-link" href="#team-c-croácia">Croácia</a>
+                    <a class="nav-link team-link" href="#team-c-argélia">Argélia</a>
+                    <a class="nav-link team-link" href="#team-c-emiradosárabesunidos">Emirados Árabes</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-d">▸ Grupo D</a>
+                    <a class="nav-link team-link" href="#team-d-argentina">Argentina</a>
+                    <a class="nav-link team-link" href="#team-d-suíça">Suíça</a>
+                    <a class="nav-link team-link" href="#team-d-nigéria">Nigéria</a>
+                    <a class="nav-link team-link" href="#team-d-costarica">Costa Rica</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-e">▸ Grupo E</a>
+                    <a class="nav-link team-link" href="#team-e-brasil">Brasil</a>
+                    <a class="nav-link team-link" href="#team-e-dinamarca">Dinamarca</a>
+                    <a class="nav-link team-link" href="#team-e-camarões">Camarões</a>
+                    <a class="nav-link team-link" href="#team-e-jamaica">Jamaica</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-f">▸ Grupo F</a>
+                    <a class="nav-link team-link" href="#team-f-frança">França</a>
+                    <a class="nav-link team-link" href="#team-f-suécia">Suécia</a>
+                    <a class="nav-link team-link" href="#team-f-egito">Egito</a>
+                    <a class="nav-link team-link" href="#team-f-qatar">Qatar</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-g">▸ Grupo G</a>
+                    <a class="nav-link team-link" href="#team-g-inglaterra">Inglaterra</a>
+                    <a class="nav-link team-link" href="#team-g-sérvia">Sérvia</a>
+                    <a class="nav-link team-link" href="#team-g-gana">Gana</a>
+                    <a class="nav-link team-link" href="#team-g-novazelândia">Nova Zelândia</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-h">▸ Grupo H</a>
+                    <a class="nav-link team-link" href="#team-h-bélgica">Bélgica</a>
+                    <a class="nav-link team-link" href="#team-h-polônia">Polônia</a>
+                    <a class="nav-link team-link" href="#team-h-mali">Mali</a>
+                    <a class="nav-link team-link" href="#team-h-arábiasaudita">Arábia Saudita</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-i">▸ Grupo I</a>
+                    <a class="nav-link team-link" href="#team-i-portugal">Portugal</a>
+                    <a class="nav-link team-link" href="#team-i-ucrânia">Ucrânia</a>
+                    <a class="nav-link team-link" href="#team-i-irã">Irã</a>
+                    <a class="nav-link team-link" href="#team-i-equador">Equador</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-j">▸ Grupo J</a>
+                    <a class="nav-link team-link" href="#team-j-espanha">Espanha</a>
+                    <a class="nav-link team-link" href="#team-j-paísdegales">País de Gales</a>
+                    <a class="nav-link team-link" href="#team-j-coreiadosul">Coreia do Sul</a>
+                    <a class="nav-link team-link" href="#team-j-peru">Peru</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-k">▸ Grupo K</a>
+                    <a class="nav-link team-link" href="#team-k-rdcongo">RD Congo</a>
+                    <a class="nav-link team-link" href="#team-k-colômbia">Colômbia</a>
+                    <a class="nav-link team-link" href="#team-k-uzbequistão">Uzbequistão</a>
+                    <a class="nav-link team-link" href="#team-k-portugal">Portugal</a>
+
+                    <a class="nav-link grupo-link" href="#grupo-l">▸ Grupo L</a>
+                    <a class="nav-link team-link" href="#team-l-uruguai">Uruguai</a>
+                    <a class="nav-link team-link" href="#team-l-chile">Chile</a>
+                    <a class="nav-link team-link" href="#team-l-marrocos">Marrocos</a>
+                    <a class="nav-link team-link" href="#team-l-costadomarfim">Costa do Marfim</a>
+
+                    <hr style="border-color: rgba(255,255,255,0.2); margin: 8px 0;">
+                    <a class="nav-link grupo-link" href="#chaveamento-ancora">🏆 Chaveamento Final</a>
+                </nav>
+
+            </div>
+            <div class="col-lg-9 col-12">
+                <h2 class="mb-4 text-center" style="color: #002366;">Seleções e Escalações</h2>
+                <div id="grupo-a" class="grupo-section">
+                    <h3 class="grupo-title">Grupo A</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-a-eua">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/us.png" alt="Brasão EUA">
+                                    <h4>EUA</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Matt Turner</li>
+                                    <li><span class="camisa">2</span> Sergiño Dest</li>
+                                    <li><span class="camisa">3</span> Chris Richards</li>
+                                    <li><span class="camisa">4</span> Tim Ream</li>
+                                    <li><span class="camisa">5</span> Antonee Robinson</li>
+                                    <li><span class="camisa">6</span> Tyler Adams</li>
+                                    <li><span class="camisa">7</span> Christian Pulisic</li>
+                                    <li><span class="camisa">8</span> Weston McKennie</li>
+                                    <li><span class="camisa">9</span> Folarin Balogun</li>
+                                    <li><span class="camisa">10</span> Malik Tillman</li>
+                                    <li><span class="camisa">11</span> Timothy Weah</li>
+                                    <li><span class="camisa">12</span> Matt Freese</li>
+                                    <li><span class="camisa">13</span> Miles Robinson</li>
+                                    <li><span class="camisa">14</span> Mark McKenzie</li>
+                                    <li><span class="camisa">15</span> Joe Scally</li>
+                                    <li><span class="camisa">16</span> Johnny Cardoso</li>
+                                    <li><span class="camisa">17</span> Aidan Morris</li>
+                                    <li><span class="camisa">18</span> Tanner Tessmann</li>
+                                    <li><span class="camisa">19</span> Haji Wright</li>
+                                    <li><span class="camisa">20</span> Ricardo Pepi</li>
+                                    <li><span class="camisa">21</span> Brenden Aaronson</li>
+                                    <li><span class="camisa">22</span> Chris Brady</li>
+                                    <li><span class="camisa">23</span> Auston Trusty</li>
+                                    <li><span class="camisa">24</span> Josh Sargent</li>
+                                    <li><span class="camisa">25</span> Kristoffer Lund</li>
+                                    <li><span class="camisa">26</span> Yunus Musah</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-a-alemanha">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/de.png"
+                                        alt="Brasão Alemanha">
+                                    <h4>Alemanha</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Oliver Baumann</li>
+                                    <li><span class="camisa">2</span> Joshua Kimmich</li>
+                                    <li><span class="camisa">3</span> Antonio Rüdiger</li>
+                                    <li><span class="camisa">4</span> Jonathan Tah</li>
+                                    <li><span class="camisa">5</span> David Raum</li>
+                                    <li><span class="camisa">6</span> Waldemar Anton</li>
+                                    <li><span class="camisa">7</span> Chris Führich</li>
+                                    <li><span class="camisa">8</span> Leon Goretzka</li>
+                                    <li><span class="camisa">9</span> Kai Havertz</li>
+                                    <li><span class="camisa">10</span> Florian Wirtz</li>
+                                    <li><span class="camisa">11</span> Serge Gnabry</li>
+                                    <li><span class="camisa">12</span> Alexander Nübel</li>
+                                    <li><span class="camisa">13</span> Nico Schlotterbeck</li>
+                                    <li><span class="camisa">14</span> Malick Thiaw</li>
+                                    <li><span class="camisa">15</span> Josha Vagnoman</li>
+                                    <li><span class="camisa">16</span> Nathaniel Brown</li>
+                                    <li><span class="camisa">17</span> Pascal Groß</li>
+                                    <li><span class="camisa">18</span> Angelo Stiller</li>
+                                    <li><span class="camisa">19</span> Leroy Sané</li>
+                                    <li><span class="camisa">20</span> Anton Stach</li>
+                                    <li><span class="camisa">21</span> Lennart Karl</li>
+                                    <li><span class="camisa">22</span> Jonas Urbig</li>
+                                    <li><span class="camisa">23</span> Benjamin Henrichs</li>
+                                    <li><span class="camisa">24</span> Robert Andrich</li>
+                                    <li><span class="camisa">25</span> Deniz Undav</li>
+                                    <li><span class="camisa">26</span> Robin Koch</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-a-japão">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/jp.png"
+                                        alt="Brasão Japão">
+                                    <h4>Japão</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Zion Suzuki</li>
+                                    <li><span class="camisa">2</span> Yukinari Sugawara</li>
+                                    <li><span class="camisa">3</span> Ko Itakura</li>
+                                    <li><span class="camisa">4</span> Takehiro Tomiyasu</li>
+                                    <li><span class="camisa">5</span> Hiroki Ito</li>
+                                    <li><span class="camisa">6</span> Wataru Endo</li>
+                                    <li><span class="camisa">7</span> Kaoru Mitoma</li>
+                                    <li><span class="camisa">8</span> Takefusa Kubo</li>
+                                    <li><span class="camisa">9</span> Ayase Ueda</li>
+                                    <li><span class="camisa">10</span> Takumi Minamino</li>
+                                    <li><span class="camisa">11</span> Ritsu Doan</li>
+                                    <li><span class="camisa">12</span> Keisuke Osako</li>
+                                    <li><span class="camisa">13</span> Koki Machida</li>
+                                    <li><span class="camisa">14</span> Shogo Taniguchi</li>
+                                    <li><span class="camisa">15</span> Daiki Hashioka</li>
+                                    <li><span class="camisa">16</span> Hidemasa Morita</li>
+                                    <li><span class="camisa">17</span> Ao Tanaka</li>
+                                    <li><span class="camisa">18</span> Reo Hatate</li>
+                                    <li><span class="camisa">19</span> Junya Ito</li>
+                                    <li><span class="camisa">20</span> Koki Ogawa</li>
+                                    <li><span class="camisa">21</span> Daizen Maeda</li>
+                                    <li><span class="camisa">22</span> Kosei Tani</li>
+                                    <li><span class="camisa">23</span> Keito Nakamura</li>
+                                    <li><span class="camisa">24</span> Yuito Suzuki</li>
+                                    <li><span class="camisa">25</span> Seiya Maikuma</li>
+                                    <li><span class="camisa">26</span> Koya Kitagawa</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-a-panamá">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/pa.png"
+                                        alt="Brasão Panamá">
+                                    <h4>Panamá</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Luis Mejía</li>
+                                    <li><span class="camisa">2</span> César Blackman</li>
+                                    <li><span class="camisa">3</span> José Córdoba</li>
+                                    <li><span class="camisa">4</span> Martín Krug</li>
+                                    <li><span class="camisa">5</span> Roderick Miller</li>
+                                    <li><span class="camisa">6</span> Cristian Martínez</li>
+                                    <li><span class="camisa">7</span> José Luis Rodríguez</li>
+                                    <li><span class="camisa">8</span> Adalberto Carrasquilla</li>
+                                    <li><span class="camisa">9</span> Kadir Barría</li>
+                                    <li><span class="camisa">10</span> Ismael Díaz</li>
+                                    <li><span class="camisa">11</span> Yoel Bárcenas</li>
+                                    <li><span class="camisa">12</span> César Samudio</li>
+                                    <li><span class="camisa">13</span> Jiovany Ramos</li>
+                                    <li><span class="camisa">14</span> Carlos Harvey</li>
+                                    <li><span class="camisa">15</span> Eric Davis</li>
+                                    <li><span class="camisa">16</span> Andrés Andrade</li>
+                                    <li><span class="camisa">17</span> José Fajardo</li>
+                                    <li><span class="camisa">18</span> Cecilio Waterman</li>
+                                    <li><span class="camisa">19</span> Jorge Gutiérrez</li>
+                                    <li><span class="camisa">20</span> Aníbal Godoy</li>
+                                    <li><span class="camisa">21</span> César Yanis</li>
+                                    <li><span class="camisa">22</span> Orlando Mosquera</li>
+                                    <li><span class="camisa">23</span> Amir Murillo</li>
+                                    <li><span class="camisa">24</span> Freddy Góndola</li>
+                                    <li><span class="camisa">25</span> Jovani Welch</li>
+                                    <li><span class="camisa">26</span> Orlando Mosquera</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-b" class="grupo-section">
+                    <h3 class="grupo-title">Grupo B</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-b-méxico">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/mx.png"
+                                        alt="Brasão México">
+                                    <h4>México</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Alfredo Talavera</li>
+                                    <li><span class="camisa">2</span> Néstor Araujo</li>
+                                    <li><span class="camisa">3</span> César Montes</li>
+                                    <li><span class="camisa">4</span> Edson Álvarez</li>
+                                    <li><span class="camisa">5</span> Johan Vásquez</li>
+                                    <li><span class="camisa">6</span> Gerardo Arteaga</li>
+                                    <li><span class="camisa">7</span> Luis Romo</li>
+                                    <li><span class="camisa">8</span> Carlos Rodríguez</li>
+                                    <li><span class="camisa">9</span> Raúl Jiménez</li>
+                                    <li><span class="camisa">10</span> Alexis Vega</li>
+                                    <li><span class="camisa">11</span> Rogelio Funes Mori</li>
+                                    <li><span class="camisa">12</span> Rodolfo Cota</li>
+                                    <li><span class="camisa">13</span> Guillermo Ochoa</li>
+                                    <li><span class="camisa">14</span> Érick Gutiérrez</li>
+                                    <li><span class="camisa">15</span> Héctor Moreno</li>
+                                    <li><span class="camisa">16</span> Héctor Herrera</li>
+                                    <li><span class="camisa">17</span> Orbelín Pineda</li>
+                                    <li><span class="camisa">18</span> Andrés Guardado</li>
+                                    <li><span class="camisa">19</span> Jorge Sánchez</li>
+                                    <li><span class="camisa">20</span> Henry Martín</li>
+                                    <li><span class="camisa">21</span> Uriel Antuna</li>
+                                    <li><span class="camisa">22</span> Hirving Lozano</li>
+                                    <li><span class="camisa">23</span> Jesús Gallardo</li>
+                                    <li><span class="camisa">24</span> Luis Chávez</li>
+                                    <li><span class="camisa">25</span> Roberto Alvarado</li>
+                                    <li><span class="camisa">26</span> Kevin Álvarez</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-b-holanda">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/nl.png"
+                                        alt="Brasão Holanda">
+                                    <h4>Holanda</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Remko Pasveer</li>
+                                    <li><span class="camisa">2</span> Jurriën Timber</li>
+                                    <li><span class="camisa">3</span> Matthijs de Ligt</li>
+                                    <li><span class="camisa">4</span> Virgil van Dijk</li>
+                                    <li><span class="camisa">5</span> Nathan Aké</li>
+                                    <li><span class="camisa">6</span> Stefan de Vrij</li>
+                                    <li><span class="camisa">7</span> Steven Bergwijn</li>
+                                    <li><span class="camisa">8</span> Cody Gakpo</li>
+                                    <li><span class="camisa">9</span> Luuk de Jong</li>
+                                    <li><span class="camisa">10</span> Memphis Depay</li>
+                                    <li><span class="camisa">11</span> Steven Berghuis</li>
+                                    <li><span class="camisa">12</span> Noa Lang</li>
+                                    <li><span class="camisa">13</span> Justin Bijlow</li>
+                                    <li><span class="camisa">14</span> Davy Klaassen</li>
+                                    <li><span class="camisa">15</span> Marten de Roon</li>
+                                    <li><span class="camisa">16</span> Tyrell Malacia</li>
+                                    <li><span class="camisa">17</span> Daley Blind</li>
+                                    <li><span class="camisa">18</span> Vincent Janssen</li>
+                                    <li><span class="camisa">19</span> Wout Weghorst</li>
+                                    <li><span class="camisa">20</span> Teun Koopmeiners</li>
+                                    <li><span class="camisa">21</span> Frenkie de Jong</li>
+                                    <li><span class="camisa">22</span> Denzel Dumfries</li>
+                                    <li><span class="camisa">23</span> Andries Noppert</li>
+                                    <li><span class="camisa">24</span> Kenneth Taylor</li>
+                                    <li><span class="camisa">25</span> Xavi Simons</li>
+                                    <li><span class="camisa">26</span> Jeremie Frimpong</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-b-senegal">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/sn.png"
+                                        alt="Brasão Senegal">
+                                    <h4>Senegal</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Seny Dieng</li>
+                                    <li><span class="camisa">2</span> Formose Mendy</li>
+                                    <li><span class="camisa">3</span> Kalidou Koulibaly</li>
+                                    <li><span class="camisa">4</span> Pape Abou Cissé</li>
+                                    <li><span class="camisa">5</span> Idrissa Gueye</li>
+                                    <li><span class="camisa">6</span> Nampalys Mendy</li>
+                                    <li><span class="camisa">7</span> Nicolas Jackson</li>
+                                    <li><span class="camisa">8</span> Cheikhou Kouyaté</li>
+                                    <li><span class="camisa">9</span> Boulaye Dia</li>
+                                    <li><span class="camisa">10</span> Moussa N'Diaye</li>
+                                    <li><span class="camisa">11</span> Pathé Ciss</li>
+                                    <li><span class="camisa">12</span> Fodé Ballo-Touré</li>
+                                    <li><span class="camisa">13</span> Iliman Ndiaye</li>
+                                    <li><span class="camisa">14</span> Ismail Jakobs</li>
+                                    <li><span class="camisa">15</span> Krépin Diatta</li>
+                                    <li><span class="camisa">16</span> Édouard Mendy</li>
+                                    <li><span class="camisa">17</span> Pape Matar Sarr</li>
+                                    <li><span class="camisa">18</span> Ismaïla Sarr</li>
+                                    <li><span class="camisa">19</span> Famara Diédhiou</li>
+                                    <li><span class="camisa">20</span> Bamba Dieng</li>
+                                    <li><span class="camisa">21</span> Youssouf Sabaly</li>
+                                    <li><span class="camisa">22</span> Abdou Diallo</li>
+                                    <li><span class="camisa">23</span> Alfred Gomis</li>
+                                    <li><span class="camisa">24</span> Moustapha Name</li>
+                                    <li><span class="camisa">25</span> Mamadou Loum</li>
+                                    <li><span class="camisa">26</span> Pape Gueye</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-b-iraque">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/iq.png"
+                                        alt="Brasão Iraque">
+                                    <h4>Iraque</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Fahad Talib</li>
+                                    <li><span class="camisa">2</span> Rebin Sulaka</li>
+                                    <li><span class="camisa">3</span> Hussein Ali</li>
+                                    <li><span class="camisa">4</span> Zaid Tahseen</li>
+                                    <li><span class="camisa">5</span> Akam Hashim</li>
+                                    <li><span class="camisa">6</span> Frans Putros</li>
+                                    <li><span class="camisa">7</span> Youssef Amyn</li>
+                                    <li><span class="camisa">8</span> Ibrahim Bayesh</li>
+                                    <li><span class="camisa">9</span> Ali Al-Hamadi</li>
+                                    <li><span class="camisa">10</span> Mohanad Ali</li>
+                                    <li><span class="camisa">11</span> Hasan Abdulkareem</li>
+                                    <li><span class="camisa">12</span> Kumel Al-Rekabe</li>
+                                    <li><span class="camisa">13</span> Ali Yousif</li>
+                                    <li><span class="camisa">14</span> Zidane Iqbal</li>
+                                    <li><span class="camisa">15</span> Zaid Ismail</li>
+                                    <li><span class="camisa">16</span> Amir Al-Ammari</li>
+                                    <li><span class="camisa">17</span> Ali Jasim</li>
+                                    <li><span class="camisa">18</span> Aymen Hussein</li>
+                                    <li><span class="camisa">19</span> Kevin Yakob</li>
+                                    <li><span class="camisa">20</span> Aimar Sher</li>
+                                    <li><span class="camisa">21</span> Marko Farji</li>
+                                    <li><span class="camisa">22</span> Ahmed Basil</li>
+                                    <li><span class="camisa">23</span> Merchas Doski</li>
+                                    <li><span class="camisa">24</span> Manaf Younis</li>
+                                    <li><span class="camisa">25</span> Ahmed Maknzi</li>
+                                    <li><span class="camisa">26</span> Peter Gwargis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-c" class="grupo-section">
+                    <h3 class="grupo-title">Grupo C</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-c-canadá">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ca.png"
+                                        alt="Brasão Canadá">
+                                    <h4>Canadá</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Dayne St. Clair</li>
+                                    <li><span class="camisa">2</span> Alistair Johnston</li>
+                                    <li><span class="camisa">3</span> Sam Adekugbe</li>
+                                    <li><span class="camisa">4</span> Kamal Miller</li>
+                                    <li><span class="camisa">5</span> Steven Vitória</li>
+                                    <li><span class="camisa">6</span> Samuel Piette</li>
+                                    <li><span class="camisa">7</span> Stephen Eustáquio</li>
+                                    <li><span class="camisa">8</span> Liam Fraser</li>
+                                    <li><span class="camisa">9</span> Lucas Cavallini</li>
+                                    <li><span class="camisa">10</span> Junior Hoilett</li>
+                                    <li><span class="camisa">11</span> Tajon Buchanan</li>
+                                    <li><span class="camisa">12</span> Ike Ugbo</li>
+                                    <li><span class="camisa">13</span> Atiba Hutchinson</li>
+                                    <li><span class="camisa">14</span> Mark-Anthony Kaye</li>
+                                    <li><span class="camisa">15</span> Ismaël Koné</li>
+                                    <li><span class="camisa">16</span> James Pantemis</li>
+                                    <li><span class="camisa">17</span> Cyle Larin</li>
+                                    <li><span class="camisa">18</span> Milan Borjan</li>
+                                    <li><span class="camisa">19</span> Alphonso Davies</li>
+                                    <li><span class="camisa">20</span> Jonathan David</li>
+                                    <li><span class="camisa">21</span> Jonathan Osorio</li>
+                                    <li><span class="camisa">22</span> Richie Laryea</li>
+                                    <li><span class="camisa">23</span> Liam Millar</li>
+                                    <li><span class="camisa">24</span> David Wotherspoon</li>
+                                    <li><span class="camisa">25</span> Derek Cornelius</li>
+                                    <li><span class="camisa">26</span> Joel Waterman</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-c-croácia">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/hr.png"
+                                        alt="Brasão Croácia">
+                                    <h4>Croácia</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Dominik Livaković</li>
+                                    <li><span class="camisa">2</span> Josip Stanišić</li>
+                                    <li><span class="camisa">3</span> Borna Barišić</li>
+                                    <li><span class="camisa">4</span> Ivan Perišić</li>
+                                    <li><span class="camisa">5</span> Martin Erlić</li>
+                                    <li><span class="camisa">6</span> Dejan Lovren</li>
+                                    <li><span class="camisa">7</span> Lovro Majer</li>
+                                    <li><span class="camisa">8</span> Mateo Kovačić</li>
+                                    <li><span class="camisa">9</span> Andrej Kramarić</li>
+                                    <li><span class="camisa">10</span> Luka Modrić</li>
+                                    <li><span class="camisa">11</span> Marcelo Brozović</li>
+                                    <li><span class="camisa">12</span> Ivo Grbić</li>
+                                    <li><span class="camisa">13</span> Nikola Vlašić</li>
+                                    <li><span class="camisa">14</span> Marko Livaja</li>
+                                    <li><span class="camisa">15</span> Mario Pašalić</li>
+                                    <li><span class="camisa">16</span> Bruno Petković</li>
+                                    <li><span class="camisa">17</span> Ante Budimir</li>
+                                    <li><span class="camisa">18</span> Mislav Oršić</li>
+                                    <li><span class="camisa">19</span> Borna Sosa</li>
+                                    <li><span class="camisa">20</span> Joško Gvardiol</li>
+                                    <li><span class="camisa">21</span> Domagoj Vida</li>
+                                    <li><span class="camisa">22</span> Josip Juranović</li>
+                                    <li><span class="camisa">23</span> Ivica Ivušić</li>
+                                    <li><span class="camisa">24</span> Josip Šutalo</li>
+                                    <li><span class="camisa">25</span> Luka Sučić</li>
+                                    <li><span class="camisa">26</span> Kristijan Jakić</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-c-argélia">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/dz.png"
+                                        alt="Brasão Argélia">
+                                    <h4>Argélia</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Anthony Mandrea</li>
+                                    <li><span class="camisa">2</span> Aïssa Mandi</li>
+                                    <li><span class="camisa">3</span> Mehdi Dorval</li>
+                                    <li><span class="camisa">4</span> Achref Abada</li>
+                                    <li><span class="camisa">5</span> Zineddine Belaïd</li>
+                                    <li><span class="camisa">6</span> Ramiz Zerrouki</li>
+                                    <li><span class="camisa">7</span> Riyad Mahrez</li>
+                                    <li><span class="camisa">8</span> Houssem Aouar</li>
+                                    <li><span class="camisa">9</span> Amine Gouiri</li>
+                                    <li><span class="camisa">10</span> Farès Chaïbi</li>
+                                    <li><span class="camisa">11</span> Saïd Benrahma</li>
+                                    <li><span class="camisa">12</span> Nadhir Benbouali</li>
+                                    <li><span class="camisa">13</span> Sohaib Naïr</li>
+                                    <li><span class="camisa">14</span> Hicham Boudaoui</li>
+                                    <li><span class="camisa">15</span> Rayan Aït-Nouri</li>
+                                    <li><span class="camisa">16</span> Kilian Belazzoug</li>
+                                    <li><span class="camisa">17</span> Farès Ghedjemis</li>
+                                    <li><span class="camisa">18</span> Mohamed Amoura</li>
+                                    <li><span class="camisa">19</span> Amin Chiakha</li>
+                                    <li><span class="camisa">20</span> Adil Aouchiche</li>
+                                    <li><span class="camisa">21</span> Ramy Bensebaini</li>
+                                    <li><span class="camisa">22</span> Ibrahim Maza</li>
+                                    <li><span class="camisa">23</span> Luca Zidane</li>
+                                    <li><span class="camisa">24</span> Yacine Titraoui</li>
+                                    <li><span class="camisa">25</span> Rafik Belghali</li>
+                                    <li><span class="camisa">26</span> Ismaël Bennacer</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-c-emiradosárabesunidos">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ae.png"
+                                        alt="Brasão Emirados Árabes Unidos">
+                                    <h4>Emirados Árabes Unidos</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Ali Khaseif</li>
+                                    <li><span class="camisa">2</span> Marcus Meloni</li>
+                                    <li><span class="camisa">3</span> Lucas Pimenta</li>
+                                    <li><span class="camisa">4</span> Saša Ivković</li>
+                                    <li><span class="camisa">5</span> Richard Akonnor</li>
+                                    <li><span class="camisa">6</span> Issam Faiz</li>
+                                    <li><span class="camisa">7</span> Ali Saleh</li>
+                                    <li><span class="camisa">8</span> Yahya Nader</li>
+                                    <li><span class="camisa">9</span> Sultan Adil</li>
+                                    <li><span class="camisa">10</span> Caio Lucas</li>
+                                    <li><span class="camisa">11</span> Fabio Lima</li>
+                                    <li><span class="camisa">12</span> Khaled Eisa</li>
+                                    <li><span class="camisa">13</span> Kouame Kouadio</li>
+                                    <li><span class="camisa">14</span> Rúben Canedo</li>
+                                    <li><span class="camisa">15</span> Khaled Al-Dhanhani</li>
+                                    <li><span class="camisa">16</span> Majed Rashid</li>
+                                    <li><span class="camisa">17</span> Nicolas Gimenez</li>
+                                    <li><span class="camisa">18</span> Harib Abdalla Suhail</li>
+                                    <li><span class="camisa">19</span> Yahya Al-Ghassani</li>
+                                    <li><span class="camisa">20</span> Mohammed Juma</li>
+                                    <li><span class="camisa">21</span> Bruno Oliveira</li>
+                                    <li><span class="camisa">22</span> Hamad Al-Muqbali</li>
+                                    <li><span class="camisa">23</span> Luan Pereira</li>
+                                    <li><span class="camisa">24</span> Abdalla Ramadan</li>
+                                    <li><span class="camisa">25</span> Khalifa Al Hammadi</li>
+                                    <li><span class="camisa">26</span> Tahnoon Al-Zaabi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-d" class="grupo-section">
+                    <h3 class="grupo-title">Grupo D</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-d-argentina">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ar.png"
+                                        alt="Brasão Argentina">
+                                    <h4>Argentina</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Franco Armani</li>
+                                    <li><span class="camisa">2</span> Juan Foyth</li>
+                                    <li><span class="camisa">3</span> Nicolás Tagliafico</li>
+                                    <li><span class="camisa">4</span> Gonzalo Montiel</li>
+                                    <li><span class="camisa">5</span> Leandro Paredes</li>
+                                    <li><span class="camisa">6</span> Germán Pezzella</li>
+                                    <li><span class="camisa">7</span> Rodrigo De Paul</li>
+                                    <li><span class="camisa">8</span> Marcos Acuña</li>
+                                    <li><span class="camisa">9</span> Julián Álvarez</li>
+                                    <li><span class="camisa">10</span> Lionel Messi</li>
+                                    <li><span class="camisa">11</span> Ángel Di María</li>
+                                    <li><span class="camisa">12</span> Gerónimo Rulli</li>
+                                    <li><span class="camisa">13</span> Cristian Romero</li>
+                                    <li><span class="camisa">14</span> Exequiel Palacios</li>
+                                    <li><span class="camisa">15</span> Ángel Correa</li>
+                                    <li><span class="camisa">16</span> Thiago Almada</li>
+                                    <li><span class="camisa">17</span> Alejandro Gómez</li>
+                                    <li><span class="camisa">18</span> Guido Rodríguez</li>
+                                    <li><span class="camisa">19</span> Nicolás Otamendi</li>
+                                    <li><span class="camisa">20</span> Alexis Mac Allister</li>
+                                    <li><span class="camisa">21</span> Paulo Dybala</li>
+                                    <li><span class="camisa">22</span> Lautaro Martínez</li>
+                                    <li><span class="camisa">23</span> Emiliano Martínez</li>
+                                    <li><span class="camisa">24</span> Enzo Fernández</li>
+                                    <li><span class="camisa">25</span> Lisandro Martínez</li>
+                                    <li><span class="camisa">26</span> Nahuel Molina</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-d-suíça">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ch.png"
+                                        alt="Brasão Suíça">
+                                    <h4>Suíça</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Yann Sommer</li>
+                                    <li><span class="camisa">2</span> Edimilson Fernandes</li>
+                                    <li><span class="camisa">3</span> Silvan Widmer</li>
+                                    <li><span class="camisa">4</span> Nico Elvedi</li>
+                                    <li><span class="camisa">5</span> Manuel Akanji</li>
+                                    <li><span class="camisa">6</span> Denis Zakaria</li>
+                                    <li><span class="camisa">7</span> Breel Embolo</li>
+                                    <li><span class="camisa">8</span> Remo Freuler</li>
+                                    <li><span class="camisa">9</span> Haris Seferovic</li>
+                                    <li><span class="camisa">10</span> Granit Xhaka</li>
+                                    <li><span class="camisa">11</span> Renato Steffen</li>
+                                    <li><span class="camisa">12</span> Jonas Omlin</li>
+                                    <li><span class="camisa">13</span> Ricardo Rodriguez</li>
+                                    <li><span class="camisa">14</span> Michel Aebischer</li>
+                                    <li><span class="camisa">15</span> Djibril Sow</li>
+                                    <li><span class="camisa">16</span> Christian Fassnacht</li>
+                                    <li><span class="camisa">17</span> Ruben Vargas</li>
+                                    <li><span class="camisa">18</span> Eray Cömert</li>
+                                    <li><span class="camisa">19</span> Noah Okafor</li>
+                                    <li><span class="camisa">20</span> Fabian Frei</li>
+                                    <li><span class="camisa">21</span> Gregor Kobel</li>
+                                    <li><span class="camisa">22</span> Fabian Schär</li>
+                                    <li><span class="camisa">23</span> Xherdan Shaqiri</li>
+                                    <li><span class="camisa">24</span> Philipp Köhn</li>
+                                    <li><span class="camisa">25</span> Fabian Rieder</li>
+                                    <li><span class="camisa">26</span> Ardon Jashari</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-d-nigéria">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ng.png"
+                                        alt="Brasão Nigéria">
+                                    <h4>Nigéria</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Stanley Nwabali</li>
+                                    <li><span class="camisa">2</span> Bright Osayi-Samuel</li>
+                                    <li><span class="camisa">3</span> Semi Ajayi</li>
+                                    <li><span class="camisa">4</span> Calvin Bassey</li>
+                                    <li><span class="camisa">5</span> Zaidu Sanusi</li>
+                                    <li><span class="camisa">6</span> Wilfred Ndidi</li>
+                                    <li><span class="camisa">7</span> Samuel Chukwueze</li>
+                                    <li><span class="camisa">8</span> Alex Iwobi</li>
+                                    <li><span class="camisa">9</span> Victor Osimhen</li>
+                                    <li><span class="camisa">10</span> Kelechi Iheanacho</li>
+                                    <li><span class="camisa">11</span> Ademola Lookman</li>
+                                    <li><span class="camisa">12</span> Francis Uzoho</li>
+                                    <li><span class="camisa">13</span> Bruno Onyemaechi</li>
+                                    <li><span class="camisa">14</span> Igoh Ogbu</li>
+                                    <li><span class="camisa">15</span> Chidozie Awaziem</li>
+                                    <li><span class="camisa">16</span> Frank Onyeka</li>
+                                    <li><span class="camisa">17</span> Fisayo Dele-Bashiru</li>
+                                    <li><span class="camisa">18</span> Moses Simon</li>
+                                    <li><span class="camisa">19</span> Victor Boniface</li>
+                                    <li><span class="camisa">20</span> Taiwo Awoniyi</li>
+                                    <li><span class="camisa">21</span> Raphael Onyedika</li>
+                                    <li><span class="camisa">22</span> Amas Obasogie</li>
+                                    <li><span class="camisa">23</span> Chidera Ejuke</li>
+                                    <li><span class="camisa">24</span> Akor Adams</li>
+                                    <li><span class="camisa">25</span> Cyriel Dessers</li>
+                                    <li><span class="camisa">26</span> Paul Onuachu</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-d-costarica">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/cr.png"
+                                        alt="Brasão Costa Rica">
+                                    <h4>Costa Rica</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Keylor Navas</li>
+                                    <li><span class="camisa">2</span> Daniel Chacón</li>
+                                    <li><span class="camisa">3</span> Juan Pablo Vargas</li>
+                                    <li><span class="camisa">4</span> Keysher Fuller</li>
+                                    <li><span class="camisa">5</span> Celso Borges</li>
+                                    <li><span class="camisa">6</span> Óscar Duarte</li>
+                                    <li><span class="camisa">7</span> Anthony Contreras</li>
+                                    <li><span class="camisa">8</span> Bryan Oviedo</li>
+                                    <li><span class="camisa">9</span> Jewison Bennette</li>
+                                    <li><span class="camisa">10</span> Bryan Ruiz</li>
+                                    <li><span class="camisa">11</span> Johan Venegas</li>
+                                    <li><span class="camisa">12</span> Joel Campbell</li>
+                                    <li><span class="camisa">13</span> Gerson Torres</li>
+                                    <li><span class="camisa">14</span> Youstin Salas</li>
+                                    <li><span class="camisa">15</span> Francisco Calvo</li>
+                                    <li><span class="camisa">16</span> Carlos Martínez</li>
+                                    <li><span class="camisa">17</span> Yeltsin Tejeda</li>
+                                    <li><span class="camisa">18</span> Esteban Alvarado</li>
+                                    <li><span class="camisa">19</span> Kendall Waston</li>
+                                    <li><span class="camisa">20</span> Brandon Aguilera</li>
+                                    <li><span class="camisa">21</span> Douglas López</li>
+                                    <li><span class="camisa">22</span> Ronald Matarrita</li>
+                                    <li><span class="camisa">23</span> Patrick Sequeira</li>
+                                    <li><span class="camisa">24</span> Roan Wilson</li>
+                                    <li><span class="camisa">25</span> Anthony Hernández</li>
+                                    <li><span class="camisa">26</span> Álvaro Zamora</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-e" class="grupo-section">
+                    <h3 class="grupo-title">Grupo E</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-e-brasil">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/br.png"
+                                        alt="Brasão Brasil">
+                                    <h4>Brasil</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Alisson</li>
+                                    <li><span class="camisa">2</span> Danilo</li>
+                                    <li><span class="camisa">3</span> Thiago Silva</li>
+                                    <li><span class="camisa">4</span> Marquinhos</li>
+                                    <li><span class="camisa">5</span> Casemiro</li>
+                                    <li><span class="camisa">6</span> Alex Sandro</li>
+                                    <li><span class="camisa">7</span> Lucas Paquetá</li>
+                                    <li><span class="camisa">8</span> Fred</li>
+                                    <li><span class="camisa">9</span> Richarlison</li>
+                                    <li><span class="camisa">10</span> Neymar</li>
+                                    <li><span class="camisa">11</span> Raphinha</li>
+                                    <li><span class="camisa">12</span> Weverton</li>
+                                    <li><span class="camisa">13</span> Dani Alves</li>
+                                    <li><span class="camisa">14</span> Éder Militão</li>
+                                    <li><span class="camisa">15</span> Fabinho</li>
+                                    <li><span class="camisa">16</span> Alex Telles</li>
+                                    <li><span class="camisa">17</span> Bruno Guimarães</li>
+                                    <li><span class="camisa">18</span> Gabriel Jesus</li>
+                                    <li><span class="camisa">19</span> Antony</li>
+                                    <li><span class="camisa">20</span> Vinícius Júnior</li>
+                                    <li><span class="camisa">21</span> Rodrygo</li>
+                                    <li><span class="camisa">22</span> Éverton Ribeiro</li>
+                                    <li><span class="camisa">23</span> Ederson</li>
+                                    <li><span class="camisa">24</span> Bremer</li>
+                                    <li><span class="camisa">25</span> Pedro</li>
+                                    <li><span class="camisa">26</span> Gabriel Martinelli</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-e-dinamarca">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/dk.png"
+                                        alt="Brasão Dinamarca">
+                                    <h4>Dinamarca</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Kasper Schmeichel</li>
+                                    <li><span class="camisa">2</span> Joachim Andersen</li>
+                                    <li><span class="camisa">3</span> Victor Nelsson</li>
+                                    <li><span class="camisa">4</span> Simon Kjær</li>
+                                    <li><span class="camisa">5</span> Joakim Mæhle</li>
+                                    <li><span class="camisa">6</span> Andreas Christensen</li>
+                                    <li><span class="camisa">7</span> Mathias Jensen</li>
+                                    <li><span class="camisa">8</span> Thomas Delaney</li>
+                                    <li><span class="camisa">9</span> Martin Braithwaite</li>
+                                    <li><span class="camisa">10</span> Christian Eriksen</li>
+                                    <li><span class="camisa">11</span> Andreas Skov Olsen</li>
+                                    <li><span class="camisa">12</span> Kasper Dolberg</li>
+                                    <li><span class="camisa">13</span> Rasmus Kristensen</li>
+                                    <li><span class="camisa">14</span> Mikkel Damsgaard</li>
+                                    <li><span class="camisa">15</span> Christian Nørgaard</li>
+                                    <li><span class="camisa">16</span> Oliver Christensen</li>
+                                    <li><span class="camisa">17</span> Jens Stryger Larsen</li>
+                                    <li><span class="camisa">18</span> Daniel Wass</li>
+                                    <li><span class="camisa">19</span> Jonas Wind</li>
+                                    <li><span class="camisa">20</span> Yussuf Poulsen</li>
+                                    <li><span class="camisa">21</span> Andreas Cornelius</li>
+                                    <li><span class="camisa">22</span> Frederik Rønnow</li>
+                                    <li><span class="camisa">23</span> Pierre-Emile Højbjerg</li>
+                                    <li><span class="camisa">24</span> Robert Skov</li>
+                                    <li><span class="camisa">25</span> Jesper Lindstrøm</li>
+                                    <li><span class="camisa">26</span> Alexander Bah</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-e-camarões">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/cm.png"
+                                        alt="Brasão Camarões">
+                                    <h4>Camarões</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Simon Ngapandouetnbu</li>
+                                    <li><span class="camisa">2</span> Jerome Ngom Mbekeli</li>
+                                    <li><span class="camisa">3</span> Nicolas Nkoulou</li>
+                                    <li><span class="camisa">4</span> Christopher Wooh</li>
+                                    <li><span class="camisa">5</span> Gael Ondoua</li>
+                                    <li><span class="camisa">6</span> Ngamaleu</li>
+                                    <li><span class="camisa">7</span> Georges-Kevin Nkoudou</li>
+                                    <li><span class="camisa">8</span> Zambo Anguissa</li>
+                                    <li><span class="camisa">9</span> Jean-Pierre Nsame</li>
+                                    <li><span class="camisa">10</span> Vincent Aboubakar</li>
+                                    <li><span class="camisa">11</span> Christian Bassogog</li>
+                                    <li><span class="camisa">12</span> Karl Toko Ekambi</li>
+                                    <li><span class="camisa">13</span> Eric Maxim Choupo-Moting</li>
+                                    <li><span class="camisa">14</span> Samuel Gouet</li>
+                                    <li><span class="camisa">15</span> Pierre Kunde</li>
+                                    <li><span class="camisa">16</span> Devis Epassy</li>
+                                    <li><span class="camisa">17</span> Olivier Mbaizo</li>
+                                    <li><span class="camisa">18</span> Martin Hongla</li>
+                                    <li><span class="camisa">19</span> Collins Fai</li>
+                                    <li><span class="camisa">20</span> Bryan Mbeumo</li>
+                                    <li><span class="camisa">21</span> Jean-Charles Castelletto</li>
+                                    <li><span class="camisa">22</span> Olivier Ntcham</li>
+                                    <li><span class="camisa">23</span> André Onana</li>
+                                    <li><span class="camisa">24</span> Enzo Ebosse</li>
+                                    <li><span class="camisa">25</span> Nouhou Tolo</li>
+                                    <li><span class="camisa">26</span> Souaibou Marou</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-e-jamaica">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/jm.png"
+                                        alt="Brasão Jamaica">
+                                    <h4>Jamaica</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Andre Blake</li>
+                                    <li><span class="camisa">2</span> Di'Shon Bernard</li>
+                                    <li><span class="camisa">3</span> Amari'i Bell</li>
+                                    <li><span class="camisa">4</span> Ephron Mason-Clark</li>
+                                    <li><span class="camisa">5</span> Ethan Pinnock</li>
+                                    <li><span class="camisa">6</span> Richard King</li>
+                                    <li><span class="camisa">7</span> Leon Bailey</li>
+                                    <li><span class="camisa">8</span> Kasey Palmer</li>
+                                    <li><span class="camisa">9</span> Bailey Cadamarteri</li>
+                                    <li><span class="camisa">10</span> Bobby De Cordova-Reid</li>
+                                    <li><span class="camisa">11</span> Tyreece Campbell</li>
+                                    <li><span class="camisa">12</span> Norman Campbell</li>
+                                    <li><span class="camisa">13</span> Amal Knight</li>
+                                    <li><span class="camisa">14</span> Isaac Hayden</li>
+                                    <li><span class="camisa">15</span> Joel Latibeaudiere</li>
+                                    <li><span class="camisa">16</span> Dwight Merrick</li>
+                                    <li><span class="camisa">17</span> Damion Lowe</li>
+                                    <li><span class="camisa">18</span> Jamal Lowe</li>
+                                    <li><span class="camisa">19</span> Kyle Ming</li>
+                                    <li><span class="camisa">20</span> Renaldo Cephas</li>
+                                    <li><span class="camisa">21</span> Tyrese Hall</li>
+                                    <li><span class="camisa">22</span> Ronaldo Webster</li>
+                                    <li><span class="camisa">23</span> Andre Gray</li>
+                                    <li><span class="camisa">24</span> Demarai Gray</li>
+                                    <li><span class="camisa">25</span> Michail Antonio</li>
+                                    <li><span class="camisa">26</span> Dexter Lembikisa</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-f" class="grupo-section">
+                    <h3 class="grupo-title">Grupo F</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-f-frança">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/fr.png"
+                                        alt="Brasão França">
+                                    <h4>França</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Hugo Lloris</li>
+                                    <li><span class="camisa">2</span> Benjamin Pavard</li>
+                                    <li><span class="camisa">3</span> Axel Disasi</li>
+                                    <li><span class="camisa">4</span> Raphaël Varane</li>
+                                    <li><span class="camisa">5</span> Jules Koundé</li>
+                                    <li><span class="camisa">6</span> Mattéo Guendouzi</li>
+                                    <li><span class="camisa">7</span> Antoine Griezmann</li>
+                                    <li><span class="camisa">8</span> Aurélien Tchouaméni</li>
+                                    <li><span class="camisa">9</span> Olivier Giroud</li>
+                                    <li><span class="camisa">10</span> Kylian Mbappé</li>
+                                    <li><span class="camisa">11</span> Ousmane Dembélé</li>
+                                    <li><span class="camisa">12</span> Randal Kolo Muani</li>
+                                    <li><span class="camisa">13</span> Youssouf Fofana</li>
+                                    <li><span class="camisa">14</span> Adrien Rabiot</li>
+                                    <li><span class="camisa">15</span> Jordan Veretout</li>
+                                    <li><span class="camisa">16</span> Steve Mandanda</li>
+                                    <li><span class="camisa">17</span> William Saliba</li>
+                                    <li><span class="camisa">18</span> Dayot Upamecano</li>
+                                    <li><span class="camisa">19</span> Karim Benzema</li>
+                                    <li><span class="camisa">20</span> Kingsley Coman</li>
+                                    <li><span class="camisa">21</span> Lucas Hernandez</li>
+                                    <li><span class="camisa">22</span> Theo Hernandez</li>
+                                    <li><span class="camisa">23</span> Alphonse Areola</li>
+                                    <li><span class="camisa">24</span> Ibrahima Konaté</li>
+                                    <li><span class="camisa">25</span> Eduardo Camavinga</li>
+                                    <li><span class="camisa">26</span> Marcus Thuram</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-f-suécia">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/se.png"
+                                        alt="Brasão Suécia">
+                                    <h4>Suécia</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Robin Olsen</li>
+                                    <li><span class="camisa">2</span> Emil Krafth</li>
+                                    <li><span class="camisa">3</span> Victor Lindelöf</li>
+                                    <li><span class="camisa">4</span> Isak Hien</li>
+                                    <li><span class="camisa">5</span> Ludwig Augustinsson</li>
+                                    <li><span class="camisa">6</span> Hugo Larsson</li>
+                                    <li><span class="camisa">7</span> Dejan Kulusevski</li>
+                                    <li><span class="camisa">8</span> Mattias Svanberg</li>
+                                    <li><span class="camisa">9</span> Viktor Gyökeres</li>
+                                    <li><span class="camisa">10</span> Alexander Isak</li>
+                                    <li><span class="camisa">11</span> Anthony Elanga</li>
+                                    <li><span class="camisa">12</span> Kristoffer Nordfeldt</li>
+                                    <li><span class="camisa">13</span> Carl Starfelt</li>
+                                    <li><span class="camisa">14</span> Gabriel Gudmundsson</li>
+                                    <li><span class="camisa">15</span> Gustaf Lagerbielke</li>
+                                    <li><span class="camisa">16</span> Jesper Karlström</li>
+                                    <li><span class="camisa">17</span> Anton Salétros</li>
+                                    <li><span class="camisa">18</span> Emil Forsberg</li>
+                                    <li><span class="camisa">19</span> Sebastian Nanasi</li>
+                                    <li><span class="camisa">20</span> Roony Bardghji</li>
+                                    <li><span class="camisa">21</span> Lucas Bergvall</li>
+                                    <li><span class="camisa">22</span> Jacob Zetterström</li>
+                                    <li><span class="camisa">23</span> Ken Sema</li>
+                                    <li><span class="camisa">24</span> Jens Cajuste</li>
+                                    <li><span class="camisa">25</span> Samuel Dahl</li>
+                                    <li><span class="camisa">26</span> Gustaf Nilsson</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-f-egito">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/eg.png"
+                                        alt="Brasão Egito">
+                                    <h4>Egito</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Mohamed El Shenawy</li>
+                                    <li><span class="camisa">2</span> Mohamed Hany</li>
+                                    <li><span class="camisa">3</span> Mohamed Abdelmonem</li>
+                                    <li><span class="camisa">4</span> Ramy Rabia</li>
+                                    <li><span class="camisa">5</span> Ahmed Abou El Fotouh</li>
+                                    <li><span class="camisa">6</span> Hamdy Fathy</li>
+                                    <li><span class="camisa">7</span> Mohamed Salah</li>
+                                    <li><span class="camisa">8</span> Emam Ashour</li>
+                                    <li><span class="camisa">9</span> Mostafa Mohamed</li>
+                                    <li><span class="camisa">10</span> Trezeguet</li>
+                                    <li><span class="camisa">11</span> Omar Marmoush</li>
+                                    <li><span class="camisa">12</span> Mostafa Shobeir</li>
+                                    <li><span class="camisa">13</span> Yasser Ibrahim</li>
+                                    <li><span class="camisa">14</span> Hossam Abdelmaguid</li>
+                                    <li><span class="camisa">15</span> Mohamed Hamdy</li>
+                                    <li><span class="camisa">16</span> Marwan Attia</li>
+                                    <li><span class="camisa">17</span> Ahmed Zizo Sayed</li>
+                                    <li><span class="camisa">18</span> Ibrahim Adel</li>
+                                    <li><span class="camisa">19</span> Hussein El Shahat</li>
+                                    <li><span class="camisa">20</span> Mohamed Sherif</li>
+                                    <li><span class="camisa">21</span> Mostafa Fathi</li>
+                                    <li><span class="camisa">22</span> El Mahdy Soliman</li>
+                                    <li><span class="camisa">23</span> Ahmed Kouka</li>
+                                    <li><span class="camisa">24</span> Mohanad Lasheen</li>
+                                    <li><span class="camisa">25</span> Mahmoud Saber</li>
+                                    <li><span class="camisa">26</span> Nasser Mansy</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-f-qatar">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/qa.png"
+                                        alt="Brasão Qatar">
+                                    <h4>Qatar</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Saad Al-Sheeb</li>
+                                    <li><span class="camisa">2</span> Pedro Miguel</li>
+                                    <li><span class="camisa">3</span> Abdelkarim Hassan</li>
+                                    <li><span class="camisa">4</span> Mohammed Waad</li>
+                                    <li><span class="camisa">5</span> Tarek Salman</li>
+                                    <li><span class="camisa">6</span> Abdulaziz Hatem</li>
+                                    <li><span class="camisa">7</span> Ahmed Alaaeldin</li>
+                                    <li><span class="camisa">8</span> Ali Assadalla</li>
+                                    <li><span class="camisa">9</span> Mohammed Muntari</li>
+                                    <li><span class="camisa">10</span> Hassan Al-Haydos</li>
+                                    <li><span class="camisa">11</span> Akram Afif</li>
+                                    <li><span class="camisa">12</span> Karim Boudiaf</li>
+                                    <li><span class="camisa">13</span> Musab Kheder</li>
+                                    <li><span class="camisa">14</span> Homam Ahmed</li>
+                                    <li><span class="camisa">15</span> Bassam Al-Rawi</li>
+                                    <li><span class="camisa">16</span> Boualem Khoukhi</li>
+                                    <li><span class="camisa">17</span> Ismaeel Mohammad</li>
+                                    <li><span class="camisa">18</span> Khalid Muneer</li>
+                                    <li><span class="camisa">19</span> Almoez Ali</li>
+                                    <li><span class="camisa">20</span> Salem Al-Hajri</li>
+                                    <li><span class="camisa">21</span> Yousef Hassan</li>
+                                    <li><span class="camisa">22</span> Meshaal Barsham</li>
+                                    <li><span class="camisa">23</span> Assim Madibo</li>
+                                    <li><span class="camisa">24</span> Naif Al-Hadhrami</li>
+                                    <li><span class="camisa">25</span> Jassem Gaber</li>
+                                    <li><span class="camisa">26</span> Mostafa Meshaal</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-g" class="grupo-section">
+                    <h3 class="grupo-title">Grupo G</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-g-inglaterra">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/gb-eng.png"
+                                        alt="Brasão Inglaterra">
+                                    <h4>Inglaterra</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Jordan Pickford</li>
+                                    <li><span class="camisa">2</span> Kyle Walker</li>
+                                    <li><span class="camisa">3</span> Luke Shaw</li>
+                                    <li><span class="camisa">4</span> Declan Rice</li>
+                                    <li><span class="camisa">5</span> John Stones</li>
+                                    <li><span class="camisa">6</span> Harry Maguire</li>
+                                    <li><span class="camisa">7</span> Jack Grealish</li>
+                                    <li><span class="camisa">8</span> Jordan Henderson</li>
+                                    <li><span class="camisa">9</span> Harry Kane</li>
+                                    <li><span class="camisa">10</span> Raheem Sterling</li>
+                                    <li><span class="camisa">11</span> Marcus Rashford</li>
+                                    <li><span class="camisa">12</span> Kieran Trippier</li>
+                                    <li><span class="camisa">13</span> Nick Pope</li>
+                                    <li><span class="camisa">14</span> Kalvin Phillips</li>
+                                    <li><span class="camisa">15</span> Eric Dier</li>
+                                    <li><span class="camisa">16</span> Conor Coady</li>
+                                    <li><span class="camisa">17</span> Bukayo Saka</li>
+                                    <li><span class="camisa">18</span> Trent Alexander-Arnold</li>
+                                    <li><span class="camisa">19</span> Mason Mount</li>
+                                    <li><span class="camisa">20</span> Phil Foden</li>
+                                    <li><span class="camisa">21</span> Ben White</li>
+                                    <li><span class="camisa">22</span> Jude Bellingham</li>
+                                    <li><span class="camisa">23</span> Aaron Ramsdale</li>
+                                    <li><span class="camisa">24</span> Callum Wilson</li>
+                                    <li><span class="camisa">25</span> James Maddison</li>
+                                    <li><span class="camisa">26</span> Conor Gallagher</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-g-sérvia">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/rs.png"
+                                        alt="Brasão Sérvia">
+                                    <h4>Sérvia</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Marko Dmitrović</li>
+                                    <li><span class="camisa">2</span> Strahinja Pavlović</li>
+                                    <li><span class="camisa">3</span> Strahinja Eraković</li>
+                                    <li><span class="camisa">4</span> Nikola Milenković</li>
+                                    <li><span class="camisa">5</span> Miloš Veljković</li>
+                                    <li><span class="camisa">6</span> Nemanja Maksimović</li>
+                                    <li><span class="camisa">7</span> Nemanja Radonjić</li>
+                                    <li><span class="camisa">8</span> Nemanja Gudelj</li>
+                                    <li><span class="camisa">9</span> Aleksandar Mitrović</li>
+                                    <li><span class="camisa">10</span> Dušan Tadić</li>
+                                    <li><span class="camisa">11</span> Luka Jović</li>
+                                    <li><span class="camisa">12</span> Predrag Rajković</li>
+                                    <li><span class="camisa">13</span> Stefan Mitrović</li>
+                                    <li><span class="camisa">14</span> Andrija Živković</li>
+                                    <li><span class="camisa">15</span> Srđan Babić</li>
+                                    <li><span class="camisa">16</span> Saša Lukić</li>
+                                    <li><span class="camisa">17</span> Filip Kostić</li>
+                                    <li><span class="camisa">18</span> Dušan Vlahović</li>
+                                    <li><span class="camisa">19</span> Uroš Račić</li>
+                                    <li><span class="camisa">20</span> Sergej Milinković-Savić</li>
+                                    <li><span class="camisa">21</span> Filip Đuričić</li>
+                                    <li><span class="camisa">22</span> Darko Lazović</li>
+                                    <li><span class="camisa">23</span> Vanja Milinković-Savić</li>
+                                    <li><span class="camisa">24</span> Ivan Ilić</li>
+                                    <li><span class="camisa">25</span> Filip Mladenović</li>
+                                    <li><span class="camisa">26</span> Marko Grujić</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-g-gana">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/gh.png" alt="Brasão Gana">
+                                    <h4>Gana</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Lawrence Ati-Zigi</li>
+                                    <li><span class="camisa">2</span> Tariq Lamptey</li>
+                                    <li><span class="camisa">3</span> Denis Odoi</li>
+                                    <li><span class="camisa">4</span> Mohammed Salisu</li>
+                                    <li><span class="camisa">5</span> Thomas Partey</li>
+                                    <li><span class="camisa">6</span> Elisha Owusu</li>
+                                    <li><span class="camisa">7</span> Abdul Fatawu Issahaku</li>
+                                    <li><span class="camisa">8</span> Daniel-Kofi Kyereh</li>
+                                    <li><span class="camisa">9</span> Jordan Ayew</li>
+                                    <li><span class="camisa">10</span> André Ayew</li>
+                                    <li><span class="camisa">11</span> Osman Bukari</li>
+                                    <li><span class="camisa">12</span> Ibrahim Danlad</li>
+                                    <li><span class="camisa">13</span> Daniel Afriyie</li>
+                                    <li><span class="camisa">14</span> Gideon Mensah</li>
+                                    <li><span class="camisa">15</span> Joseph Aidoo</li>
+                                    <li><span class="camisa">16</span> Abdul Manaf Nurudeen</li>
+                                    <li><span class="camisa">17</span> Baba Rahman</li>
+                                    <li><span class="camisa">18</span> Daniel Amartey</li>
+                                    <li><span class="camisa">19</span> Iñaki Williams</li>
+                                    <li><span class="camisa">20</span> Mohammed Kudus</li>
+                                    <li><span class="camisa">21</span> Salis Abdul Samed</li>
+                                    <li><span class="camisa">22</span> Kamaldeen Sulemana</li>
+                                    <li><span class="camisa">23</span> Alexander Djiku</li>
+                                    <li><span class="camisa">24</span> Kamal Sowah</li>
+                                    <li><span class="camisa">25</span> Antoine Semenyo</li>
+                                    <li><span class="camisa">26</span> Alidu Seidu</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-g-novazelândia">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/nz.png"
+                                        alt="Brasão Nova Zelândia">
+                                    <h4>Nova Zelândia</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Max Crocombe</li>
+                                    <li><span class="camisa">2</span> Tim Payne</li>
+                                    <li><span class="camisa">3</span> Michael Boxall</li>
+                                    <li><span class="camisa">4</span> Tyler Bindon</li>
+                                    <li><span class="camisa">5</span> James McGarry</li>
+                                    <li><span class="camisa">6</span> Joe Bell</li>
+                                    <li><span class="camisa">7</span> Elijah Just</li>
+                                    <li><span class="camisa">8</span> Marko Stamenic</li>
+                                    <li><span class="camisa">9</span> Chris Wood</li>
+                                    <li><span class="camisa">10</span> Sarpreet Singh</li>
+                                    <li><span class="camisa">11</span> Ben Waine</li>
+                                    <li><span class="camisa">12</span> Alex Paulsen</li>
+                                    <li><span class="camisa">13</span> Finn Surman</li>
+                                    <li><span class="camisa">14</span> Bill Tuiloma</li>
+                                    <li><span class="camisa">15</span> Nando Pijnaker</li>
+                                    <li><span class="camisa">16</span> Alex Rufer</li>
+                                    <li><span class="camisa">17</span> Matthew Garbett</li>
+                                    <li><span class="camisa">18</span> Callum McCowatt</li>
+                                    <li><span class="camisa">19</span> Logan Rogerson</li>
+                                    <li><span class="camisa">20</span> Kosta Barbarouses</li>
+                                    <li><span class="camisa">21</span> Ben Old</li>
+                                    <li><span class="camisa">22</span> Michael Woud</li>
+                                    <li><span class="camisa">23</span> Liberato Cacace</li>
+                                    <li><span class="camisa">24</span> Ryan Thomas</li>
+                                    <li><span class="camisa">25</span> Clayton Lewis</li>
+                                    <li><span class="camisa">26</span> Andre De Jong</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-h" class="grupo-section">
+                    <h3 class="grupo-title">Grupo H</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-h-bélgica">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/be.png"
+                                        alt="Brasão Bélgica">
+                                    <h4>Bélgica</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Thibaut Courtois</li>
+                                    <li><span class="camisa">2</span> Toby Alderweireld</li>
+                                    <li><span class="camisa">3</span> Arthur Theate</li>
+                                    <li><span class="camisa">4</span> Wout Faes</li>
+                                    <li><span class="camisa">5</span> Jan Vertonghen</li>
+                                    <li><span class="camisa">6</span> Axel Witsel</li>
+                                    <li><span class="camisa">7</span> Kevin De Bruyne</li>
+                                    <li><span class="camisa">8</span> Youri Tielemans</li>
+                                    <li><span class="camisa">9</span> Romelu Lukaku</li>
+                                    <li><span class="camisa">10</span> Eden Hazard</li>
+                                    <li><span class="camisa">11</span> Yannick Carrasco</li>
+                                    <li><span class="camisa">12</span> Simon Mignolet</li>
+                                    <li><span class="camisa">13</span> Koen Casteels</li>
+                                    <li><span class="camisa">14</span> Dries Mertens</li>
+                                    <li><span class="camisa">15</span> Thomas Meunier</li>
+                                    <li><span class="camisa">16</span> Thorgan Hazard</li>
+                                    <li><span class="camisa">17</span> Amadou Onana</li>
+                                    <li><span class="camisa">18</span> Leandro Trossard</li>
+                                    <li><span class="camisa">19</span> Leander Dendoncker</li>
+                                    <li><span class="camisa">20</span> Hans Vanaken</li>
+                                    <li><span class="camisa">21</span> Timothy Castagne</li>
+                                    <li><span class="camisa">22</span> Charles De Ketelaere</li>
+                                    <li><span class="camisa">23</span> Michy Batshuayi</li>
+                                    <li><span class="camisa">24</span> Loïs Openda</li>
+                                    <li><span class="camisa">25</span> Jérémy Doku</li>
+                                    <li><span class="camisa">26</span> Zeno Debast</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-h-polônia">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/pl.png"
+                                        alt="Brasão Polônia">
+                                    <h4>Polônia</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Wojciech Szczęsny</li>
+                                    <li><span class="camisa">2</span> Matty Cash</li>
+                                    <li><span class="camisa">3</span> Artur Jędrzejczyk</li>
+                                    <li><span class="camisa">4</span> Mateusz Wieteska</li>
+                                    <li><span class="camisa">5</span> Jan Bednarek</li>
+                                    <li><span class="camisa">6</span> Krystian Bielik</li>
+                                    <li><span class="camisa">7</span> Arkadiusz Milik</li>
+                                    <li><span class="camisa">8</span> Damian Szymański</li>
+                                    <li><span class="camisa">9</span> Robert Lewandowski</li>
+                                    <li><span class="camisa">10</span> Grzegorz Krychowiak</li>
+                                    <li><span class="camisa">11</span> Kamil Grosicki</li>
+                                    <li><span class="camisa">12</span> Łukasz Skorupski</li>
+                                    <li><span class="camisa">13</span> Jakub Kamiński</li>
+                                    <li><span class="camisa">14</span> Jakub Kiwior</li>
+                                    <li><span class="camisa">15</span> Kamil Glik</li>
+                                    <li><span class="camisa">16</span> Karol Świderski</li>
+                                    <li><span class="camisa">17</span> Szymon Żurkowski</li>
+                                    <li><span class="camisa">18</span> Bartosz Bereszyński</li>
+                                    <li><span class="camisa">19</span> Sebastian Szymański</li>
+                                    <li><span class="camisa">20</span> Piotr Zieliński</li>
+                                    <li><span class="camisa">21</span> Nicola Zalewski</li>
+                                    <li><span class="camisa">22</span> Kamil Grabara</li>
+                                    <li><span class="camisa">23</span> Krzysztof Piątek</li>
+                                    <li><span class="camisa">24</span> Przemysław Frankowski</li>
+                                    <li><span class="camisa">25</span> Robert Gumny</li>
+                                    <li><span class="camisa">26</span> Michał Skóraś</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-h-mali">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ml.png" alt="Brasão Mali">
+                                    <h4>Mali</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Djigui Diarra</li>
+                                    <li><span class="camisa">2</span> Hamari Traoré</li>
+                                    <li><span class="camisa">3</span> Falaye Sacko</li>
+                                    <li><span class="camisa">4</span> Boubakar Kouyaté</li>
+                                    <li><span class="camisa">5</span> Sikou Niakaté</li>
+                                    <li><span class="camisa">6</span> Mohamed Camara</li>
+                                    <li><span class="camisa">7</span> Yves Bissouma</li>
+                                    <li><span class="camisa">8</span> Amadou Haidara</li>
+                                    <li><span class="camisa">9</span> El Bilal Touré</li>
+                                    <li><span class="camisa">10</span> Adama Traoré</li>
+                                    <li><span class="camisa">11</span> Lassine Sinayoko</li>
+                                    <li><span class="camisa">12</span> Ismaël Diawara</li>
+                                    <li><span class="camisa">13</span> Moussa Diarra</li>
+                                    <li><span class="camisa">14</span> Mamadou Fofana</li>
+                                    <li><span class="camisa">15</span> Abdoulaye Diaby</li>
+                                    <li><span class="camisa">16</span> Diadié Samassékou</li>
+                                    <li><span class="camisa">17</span> Kamory Doumbia</li>
+                                    <li><span class="camisa">18</span> Aliou Dieng</li>
+                                    <li><span class="camisa">19</span> Ibrahima Koné</li>
+                                    <li><span class="camisa">20</span> Nene Dorgeles</li>
+                                    <li><span class="camisa">21</span> Moussa Doumbia</li>
+                                    <li><span class="camisa">22</span> Aboubacar Doumbia</li>
+                                    <li><span class="camisa">23</span> Sekou Koita</li>
+                                    <li><span class="camisa">24</span> Lassana Coulibaly</li>
+                                    <li><span class="camisa">25</span> Modibo Sagnan</li>
+                                    <li><span class="camisa">26</span> Ibrahim Sissoko</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-h-arábiasaudita">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/sa.png"
+                                        alt="Brasão Arábia Saudita">
+                                    <h4>Arábia Saudita</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Mohammed Al-Rubaie</li>
+                                    <li><span class="camisa">2</span> Sultan Al-Ghannam</li>
+                                    <li><span class="camisa">3</span> Abdullah Madu</li>
+                                    <li><span class="camisa">4</span> Abdulelah Al-Amri</li>
+                                    <li><span class="camisa">5</span> Ali Al-Bulaihi</li>
+                                    <li><span class="camisa">6</span> Mohammed Al-Breik</li>
+                                    <li><span class="camisa">7</span> Salman Al-Faraj</li>
+                                    <li><span class="camisa">8</span> Abdulellah Al-Malki</li>
+                                    <li><span class="camisa">9</span> Firas Al-Buraikan</li>
+                                    <li><span class="camisa">10</span> Salem Al-Dawsari</li>
+                                    <li><span class="camisa">11</span> Saleh Al-Shehri</li>
+                                    <li><span class="camisa">12</span> Saud Abdulhamid</li>
+                                    <li><span class="camisa">13</span> Yasser Al-Shahrani</li>
+                                    <li><span class="camisa">14</span> Abdullah Otayf</li>
+                                    <li><span class="camisa">15</span> Ali Al-Hassan</li>
+                                    <li><span class="camisa">16</span> Sami Al-Najei</li>
+                                    <li><span class="camisa">17</span> Hassan Al-Tambakti</li>
+                                    <li><span class="camisa">18</span> Nawaf Al-Abed</li>
+                                    <li><span class="camisa">19</span> Hattan Bahebri</li>
+                                    <li><span class="camisa">20</span> Abdulrahman Al-Obood</li>
+                                    <li><span class="camisa">21</span> Mohammed Al-Owais</li>
+                                    <li><span class="camisa">22</span> Nawaf Al-Aqidi</li>
+                                    <li><span class="camisa">23</span> Mohamed Kanno</li>
+                                    <li><span class="camisa">24</span> Nasser Al-Dawsari</li>
+                                    <li><span class="camisa">25</span> Haitham Asiri</li>
+                                    <li><span class="camisa">26</span> Riyadh Sharahili</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-i" class="grupo-section">
+                    <h3 class="grupo-title">Grupo I</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-i-portugal">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/pt.png"
+                                        alt="Brasão Portugal">
+                                    <h4>Portugal</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Rui Patrício</li>
+                                    <li><span class="camisa">2</span> Diogo Dalot</li>
+                                    <li><span class="camisa">3</span> Pepe</li>
+                                    <li><span class="camisa">4</span> Rúben Dias</li>
+                                    <li><span class="camisa">5</span> Raphaël Guerreiro</li>
+                                    <li><span class="camisa">6</span> João Palhinha</li>
+                                    <li><span class="camisa">7</span> Cristiano Ronaldo</li>
+                                    <li><span class="camisa">8</span> Bruno Fernandes</li>
+                                    <li><span class="camisa">9</span> André Silva</li>
+                                    <li><span class="camisa">10</span> Bernardo Silva</li>
+                                    <li><span class="camisa">11</span> João Félix</li>
+                                    <li><span class="camisa">12</span> José Sá</li>
+                                    <li><span class="camisa">13</span> Danilo Pereira</li>
+                                    <li><span class="camisa">14</span> William Carvalho</li>
+                                    <li><span class="camisa">15</span> Rafael Leão</li>
+                                    <li><span class="camisa">16</span> Vitinha</li>
+                                    <li><span class="camisa">17</span> João Mário</li>
+                                    <li><span class="camisa">18</span> Rúben Neves</li>
+                                    <li><span class="camisa">19</span> Nuno Mendes</li>
+                                    <li><span class="camisa">20</span> João Cancelo</li>
+                                    <li><span class="camisa">21</span> Ricardo Horta</li>
+                                    <li><span class="camisa">22</span> Diogo Costa</li>
+                                    <li><span class="camisa">23</span> Matheus Nunes</li>
+                                    <li><span class="camisa">24</span> António Silva</li>
+                                    <li><span class="camisa">25</span> Otávio</li>
+                                    <li><span class="camisa">26</span> Gonçalo Ramos</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-i-ucrânia">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ua.png"
+                                        alt="Brasão Ucrânia">
+                                    <h4>Ucrânia</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Andriy Lunin</li>
+                                    <li><span class="camisa">2</span> Yukhym Konoplya</li>
+                                    <li><span class="camisa">3</span> Illya Zabarnyi</li>
+                                    <li><span class="camisa">4</span> Mykola Matviyenko</li>
+                                    <li><span class="camisa">5</span> Vitaliy Mykolenko</li>
+                                    <li><span class="camisa">6</span> Taras Stepanenko</li>
+                                    <li><span class="camisa">7</span> Andriy Yarmolenko</li>
+                                    <li><span class="camisa">8</span> Oleksandr Zinchenko</li>
+                                    <li><span class="camisa">9</span> Artem Dovbyk</li>
+                                    <li><span class="camisa">10</span> Mykhailo Mudryk</li>
+                                    <li><span class="camisa">11</span> Viktor Tsyhankov</li>
+                                    <li><span class="camisa">12</span> Anatoliy Trubin</li>
+                                    <li><span class="camisa">13</span> Valeriy Bondar</li>
+                                    <li><span class="camisa">14</span> Oleksandr Svatok</li>
+                                    <li><span class="camisa">15</span> Maksym Talovierov</li>
+                                    <li><span class="camisa">16</span> Serhiy Sydorchuk</li>
+                                    <li><span class="camisa">17</span> Ruslan Malinovskyi</li>
+                                    <li><span class="camisa">18</span> Mykola Shaparenko</li>
+                                    <li><span class="camisa">19</span> Volodymyr Brazhko</li>
+                                    <li><span class="camisa">20</span> Heorhiy Sudakov</li>
+                                    <li><span class="camisa">21</span> Roman Yaremchuk</li>
+                                    <li><span class="camisa">22</span> Heorhiy Bushchan</li>
+                                    <li><span class="camisa">23</span> Vladyslav Vanat</li>
+                                    <li><span class="camisa">24</span> Oleksandr Zubkov</li>
+                                    <li><span class="camisa">25</span> Bogdan Mykhaylichenko</li>
+                                    <li><span class="camisa">26</span> Oleksandr Karavayev</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-i-irã">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ir.png" alt="Brasão Irã">
+                                    <h4>Irã</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Alireza Beiranvand</li>
+                                    <li><span class="camisa">2</span> Sadegh Moharrami</li>
+                                    <li><span class="camisa">3</span> Ehsan Hajsafi</li>
+                                    <li><span class="camisa">4</span> Shojae Khalilzadeh</li>
+                                    <li><span class="camisa">5</span> Milad Mohammadi</li>
+                                    <li><span class="camisa">6</span> Saeid Ezatolahi</li>
+                                    <li><span class="camisa">7</span> Alireza Jahanbakhsh</li>
+                                    <li><span class="camisa">8</span> Morteza Pouraliganji</li>
+                                    <li><span class="camisa">9</span> Mehdi Taremi</li>
+                                    <li><span class="camisa">10</span> Karim Ansarifard</li>
+                                    <li><span class="camisa">11</span> Vahid Amiri</li>
+                                    <li><span class="camisa">12</span> Payam Niazmand</li>
+                                    <li><span class="camisa">13</span> Hossein Kanaanizadegan</li>
+                                    <li><span class="camisa">14</span> Saman Ghoddos</li>
+                                    <li><span class="camisa">15</span> Rouzbeh Cheshmi</li>
+                                    <li><span class="camisa">16</span> Mehdi Torabi</li>
+                                    <li><span class="camisa">17</span> Ali Gholizadeh</li>
+                                    <li><span class="camisa">18</span> Ali Karimi</li>
+                                    <li><span class="camisa">19</span> Majid Hosseini</li>
+                                    <li><span class="camisa">20</span> Sardar Azmoun</li>
+                                    <li><span class="camisa">21</span> Ahmad Nourollahi</li>
+                                    <li><span class="camisa">22</span> Amir Abedzadeh</li>
+                                    <li><span class="camisa">23</span> Ramin Rezaeian</li>
+                                    <li><span class="camisa">24</span> Hossein Hosseini</li>
+                                    <li><span class="camisa">25</span> Abolfazl Jalali</li>
+                                    <li><span class="camisa">26</span> Saman Ghoddos</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-i-equador">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ec.png"
+                                        alt="Brasão Equador">
+                                    <h4>Equador</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Hernán Galíndez</li>
+                                    <li><span class="camisa">2</span> Félix Torres</li>
+                                    <li><span class="camisa">3</span> Piero Hincapié</li>
+                                    <li><span class="camisa">4</span> Robert Arboleda</li>
+                                    <li><span class="camisa">5</span> José Cifuentes</li>
+                                    <li><span class="camisa">6</span> Willian Pacho</li>
+                                    <li><span class="camisa">7</span> Pervis Estupiñán</li>
+                                    <li><span class="camisa">8</span> Carlos Gruezo</li>
+                                    <li><span class="camisa">9</span> Ayrton Preciado</li>
+                                    <li><span class="camisa">10</span> Romario Ibarra</li>
+                                    <li><span class="camisa">11</span> Michael Estrada</li>
+                                    <li><span class="camisa">12</span> Moisés Ramírez</li>
+                                    <li><span class="camisa">13</span> Enner Valencia</li>
+                                    <li><span class="camisa">14</span> Xavier Arreaga</li>
+                                    <li><span class="camisa">15</span> Ángel Mena</li>
+                                    <li><span class="camisa">16</span> Jeremy Sarmiento</li>
+                                    <li><span class="camisa">17</span> Ángelo Preciado</li>
+                                    <li><span class="camisa">18</span> Diego Palacios</li>
+                                    <li><span class="camisa">19</span> Gonzalo Plata</li>
+                                    <li><span class="camisa">20</span> Sebas Méndez</li>
+                                    <li><span class="camisa">21</span> Alan Franco</li>
+                                    <li><span class="camisa">22</span> Alexander Domínguez</li>
+                                    <li><span class="camisa">23</span> Moisés Caicedo</li>
+                                    <li><span class="camisa">24</span> Djorkaeff Reasco</li>
+                                    <li><span class="camisa">25</span> Jackson Porozo</li>
+                                    <li><span class="camisa">26</span> Kevin Rodríguez</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-j" class="grupo-section">
+                    <h3 class="grupo-title">Grupo J</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-j-espanha">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/es.png"
+                                        alt="Brasão Espanha">
+                                    <h4>Espanha</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Robert Sánchez</li>
+                                    <li><span class="camisa">2</span> César Azpilicueta</li>
+                                    <li><span class="camisa">3</span> Eric García</li>
+                                    <li><span class="camisa">4</span> Pau Torres</li>
+                                    <li><span class="camisa">5</span> Sergio Busquets</li>
+                                    <li><span class="camisa">6</span> Marcos Llorente</li>
+                                    <li><span class="camisa">7</span> Álvaro Morata</li>
+                                    <li><span class="camisa">8</span> Koke</li>
+                                    <li><span class="camisa">9</span> Gavi</li>
+                                    <li><span class="camisa">10</span> Marco Asensio</li>
+                                    <li><span class="camisa">11</span> Ferran Torres</li>
+                                    <li><span class="camisa">12</span> Nico Williams</li>
+                                    <li><span class="camisa">13</span> David Raya</li>
+                                    <li><span class="camisa">14</span> Alejandro Balde</li>
+                                    <li><span class="camisa">15</span> Hugo Guillamón</li>
+                                    <li><span class="camisa">16</span> Rodri</li>
+                                    <li><span class="camisa">17</span> Yeremy Pino</li>
+                                    <li><span class="camisa">18</span> Jordi Alba</li>
+                                    <li><span class="camisa">19</span> Carlos Soler</li>
+                                    <li><span class="camisa">20</span> Dani Carvajal</li>
+                                    <li><span class="camisa">21</span> Dani Olmo</li>
+                                    <li><span class="camisa">22</span> Pablo Sarabia</li>
+                                    <li><span class="camisa">23</span> Unai Simón</li>
+                                    <li><span class="camisa">24</span> Aymeric Laporte</li>
+                                    <li><span class="camisa">25</span> Ansu Fati</li>
+                                    <li><span class="camisa">26</span> Pedri</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-j-paísdegales">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/gb-wls.png"
+                                        alt="Brasão País de Gales">
+                                    <h4>País de Gales</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Wayne Hennessey</li>
+                                    <li><span class="camisa">2</span> Chris Gunter</li>
+                                    <li><span class="camisa">3</span> Neco Williams</li>
+                                    <li><span class="camisa">4</span> Ben Davies</li>
+                                    <li><span class="camisa">5</span> Chris Mepham</li>
+                                    <li><span class="camisa">6</span> Joe Rodon</li>
+                                    <li><span class="camisa">7</span> Joe Allen</li>
+                                    <li><span class="camisa">8</span> Harry Wilson</li>
+                                    <li><span class="camisa">9</span> Brennan Johnson</li>
+                                    <li><span class="camisa">10</span> Aaron Ramsey</li>
+                                    <li><span class="camisa">11</span> Gareth Bale</li>
+                                    <li><span class="camisa">12</span> Danny Ward</li>
+                                    <li><span class="camisa">13</span> Kieffer Moore</li>
+                                    <li><span class="camisa">14</span> Connor Roberts</li>
+                                    <li><span class="camisa">15</span> Ethan Ampadu</li>
+                                    <li><span class="camisa">16</span> Joe Morrell</li>
+                                    <li><span class="camisa">17</span> Tom Lockyer</li>
+                                    <li><span class="camisa">18</span> Jonny Williams</li>
+                                    <li><span class="camisa">19</span> Mark Harris</li>
+                                    <li><span class="camisa">20</span> Daniel James</li>
+                                    <li><span class="camisa">21</span> Adam Davies</li>
+                                    <li><span class="camisa">22</span> Sorba Thomas</li>
+                                    <li><span class="camisa">23</span> Dylan Levitt</li>
+                                    <li><span class="camisa">24</span> Ben Cabango</li>
+                                    <li><span class="camisa">25</span> Rubin Colwill</li>
+                                    <li><span class="camisa">26</span> Matthew Smith</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-j-coreiadosul">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/kr.png"
+                                        alt="Brasão Coreia do Sul">
+                                    <h4>Coreia do Sul</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Kim Seung-gyu</li>
+                                    <li><span class="camisa">2</span> Yoon Jong-gyu</li>
+                                    <li><span class="camisa">3</span> Kim Jin-su</li>
+                                    <li><span class="camisa">4</span> Kim Min-jae</li>
+                                    <li><span class="camisa">5</span> Jung Woo-young</li>
+                                    <li><span class="camisa">6</span> Hwang In-beom</li>
+                                    <li><span class="camisa">7</span> Son Heung-min</li>
+                                    <li><span class="camisa">8</span> Paik Seung-ho</li>
+                                    <li><span class="camisa">9</span> Cho Gue-sung</li>
+                                    <li><span class="camisa">10</span> Lee Jae-sung</li>
+                                    <li><span class="camisa">11</span> Hwang Hee-chan</li>
+                                    <li><span class="camisa">12</span> Song Bum-keun</li>
+                                    <li><span class="camisa">13</span> Son Jun-ho</li>
+                                    <li><span class="camisa">14</span> Hong Chul</li>
+                                    <li><span class="camisa">15</span> Kim Moon-hwan</li>
+                                    <li><span class="camisa">16</span> Hwang Ui-jo</li>
+                                    <li><span class="camisa">17</span> Na Sang-ho</li>
+                                    <li><span class="camisa">18</span> Lee Kang-in</li>
+                                    <li><span class="camisa">19</span> Kim Young-gwon</li>
+                                    <li><span class="camisa">20</span> Kwon Kyung-won</li>
+                                    <li><span class="camisa">21</span> Jo Hyeon-woo</li>
+                                    <li><span class="camisa">22</span> Kwon Chang-hoon</li>
+                                    <li><span class="camisa">23</span> Kim Tae-hwan</li>
+                                    <li><span class="camisa">24</span> Cho Yu-min</li>
+                                    <li><span class="camisa">25</span> Jeong Woo-yeong</li>
+                                    <li><span class="camisa">26</span> Song Min-kyu</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-j-peru">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/pe.png" alt="Brasão Peru">
+                                    <h4>Peru</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Pedro Gallese</li>
+                                    <li><span class="camisa">2</span> Luis Advíncula</li>
+                                    <li><span class="camisa">3</span> Carlos Zambrano</li>
+                                    <li><span class="camisa">4</span> Alexander Callens</li>
+                                    <li><span class="camisa">5</span> Miguel Trauco</li>
+                                    <li><span class="camisa">6</span> Renato Tapia</li>
+                                    <li><span class="camisa">7</span> André Carrillo</li>
+                                    <li><span class="camisa">8</span> Yoshimar Yotún</li>
+                                    <li><span class="camisa">9</span> Paolo Guerrero</li>
+                                    <li><span class="camisa">10</span> Gianluca Lapadula</li>
+                                    <li><span class="camisa">11</span> Edison Flores</li>
+                                    <li><span class="camisa">12</span> Carlos Cáceda</li>
+                                    <li><span class="camisa">13</span> Aldo Corzo</li>
+                                    <li><span class="camisa">14</span> Miguel Araujo</li>
+                                    <li><span class="camisa">15</span> Anderson Santamaría</li>
+                                    <li><span class="camisa">16</span> Wilder Cartagena</li>
+                                    <li><span class="camisa">17</span> Pedro Aquino</li>
+                                    <li><span class="camisa">18</span> Sergio Peña</li>
+                                    <li><span class="camisa">19</span> Piero Quispe</li>
+                                    <li><span class="camisa">20</span> Bryan Reyna</li>
+                                    <li><span class="camisa">21</span> Joao Grimaldo</li>
+                                    <li><span class="camisa">22</span> Diego Romero</li>
+                                    <li><span class="camisa">23</span> Oliver Sonne</li>
+                                    <li><span class="camisa">24</span> Andy Polo</li>
+                                    <li><span class="camisa">25</span> Marcos López</li>
+                                    <li><span class="camisa">26</span> Alex Valera</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-k" class="grupo-section">
+                    <h3 class="grupo-title">Grupo K</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-k-rdcongo">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/cd.png"
+                                        alt="Brasão RD Congo">
+                                    <h4>RD Congo</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Theo Fayulu</li>
+                                    <li><span class="camisa">2</span> Aaron Wan-Bissaka</li>
+                                    <li><span class="camisa">3</span> Arthur Masuaku</li>
+                                    <li><span class="camisa">4</span> Axel Tuanzebe</li>
+                                    <li><span class="camisa">5</span> Chancel Mbemba</li>
+                                    <li><span class="camisa">6</span> Joris Kayembe</li>
+                                    <li><span class="camisa">7</span> Theo Bongonda</li>
+                                    <li><span class="camisa">8</span> Samuel Moutoussamy</li>
+                                    <li><span class="camisa">9</span> Yoane Wissa</li>
+                                    <li><span class="camisa">10</span> Gaël Kakuta</li>
+                                    <li><span class="camisa">11</span> Meschack Elia</li>
+                                    <li><span class="camisa">12</span> Lionel Mpasi</li>
+                                    <li><span class="camisa">13</span> Charles Pickel</li>
+                                    <li><span class="camisa">14</span> Edo Kayembe</li>
+                                    <li><span class="camisa">15</span> Rocky Bushiri</li>
+                                    <li><span class="camisa">16</span> Jeremy Ngakia</li>
+                                    <li><span class="camisa">17</span> Simon Banza</li>
+                                    <li><span class="camisa">18</span> Cedric Bakambu</li>
+                                    <li><span class="camisa">19</span> Fiston Mayele</li>
+                                    <li><span class="camisa">20</span> Noah Sadiki</li>
+                                    <li><span class="camisa">21</span> Ngal'ayel Mukau</li>
+                                    <li><span class="camisa">22</span> Matthieu Epolo</li>
+                                    <li><span class="camisa">23</span> Steven Kapuadi</li>
+                                    <li><span class="camisa">24</span> Nathanael Mbuku</li>
+                                    <li><span class="camisa">25</span> Brian Cipenga</li>
+                                    <li><span class="camisa">26</span> Warren Bondo</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-k-colômbia">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/co.png"
+                                        alt="Brasão Colômbia">
+                                    <h4>Colômbia</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Camilo Vargas</li>
+                                    <li><span class="camisa">2</span> Daniel Muñoz</li>
+                                    <li><span class="camisa">3</span> Davinson Sánchez</li>
+                                    <li><span class="camisa">4</span> Jhon Lucumí</li>
+                                    <li><span class="camisa">5</span> Johan Mojica</li>
+                                    <li><span class="camisa">6</span> Jefferson Lerma</li>
+                                    <li><span class="camisa">7</span> Richard Ríos</li>
+                                    <li><span class="camisa">8</span> Jhon Arias</li>
+                                    <li><span class="camisa">9</span> James Rodríguez</li>
+                                    <li><span class="camisa">10</span> Luis Díaz</li>
+                                    <li><span class="camisa">11</span> Jhon Córdoba</li>
+                                    <li><span class="camisa">12</span> Álvaro Montero</li>
+                                    <li><span class="camisa">13</span> Carlos Cuesta</li>
+                                    <li><span class="camisa">14</span> Yerry Mina</li>
+                                    <li><span class="camisa">15</span> Santiago Arias</li>
+                                    <li><span class="camisa">16</span> Kevin Castaño</li>
+                                    <li><span class="camisa">17</span> Mateus Uribe</li>
+                                    <li><span class="camisa">18</span> Juan Portilla</li>
+                                    <li><span class="camisa">19</span> Jorge Carrascal</li>
+                                    <li><span class="camisa">20</span> Juan Quintero</li>
+                                    <li><span class="camisa">21</span> Yaser Asprilla</li>
+                                    <li><span class="camisa">22</span> Jhon Durán</li>
+                                    <li><span class="camisa">23</span> Luis Sinisterra</li>
+                                    <li><span class="camisa">24</span> Borré</li>
+                                    <li><span class="camisa">25</span> Carlos Terán</li>
+                                    <li><span class="camisa">26</span> David Ospina</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-k-uzbequistão">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/uz.png"
+                                        alt="Brasão Uzbequistão">
+                                    <h4>Uzbequistão</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Abduvakhid Nematov</li>
+                                    <li><span class="camisa">2</span> Abdukodir Khusanov</li>
+                                    <li><span class="camisa">3</span> Husniddin Aliqulov</li>
+                                    <li><span class="camisa">4</span> Rustam Ashurmatov</li>
+                                    <li><span class="camisa">5</span> Sherzod Nasrullaev</li>
+                                    <li><span class="camisa">6</span> Farrukh Sayfiev</li>
+                                    <li><span class="camisa">7</span> Khojiakbar Alijonov</li>
+                                    <li><span class="camisa">8</span> Otabek Shukurov</li>
+                                    <li><span class="camisa">9</span> Odiljon Hamrobekov</li>
+                                    <li><span class="camisa">10</span> Abbosbek Fayzullaev</li>
+                                    <li><span class="camisa">11</span> Eldor Shomurodov</li>
+                                    <li><span class="camisa">12</span> Utkir Yusupov</li>
+                                    <li><span class="camisa">13</span> Botirali Ergashev</li>
+                                    <li><span class="camisa">14</span> Umar Eshmurodov</li>
+                                    <li><span class="camisa">15</span> Zafarmurod Abdurakhmatov</li>
+                                    <li><span class="camisa">16</span> Azizbek Amonov</li>
+                                    <li><span class="camisa">17</span> Jamshid Iskanderov</li>
+                                    <li><span class="camisa">18</span> Jaloliddin Masharipov</li>
+                                    <li><span class="camisa">19</span> Oston Urunov</li>
+                                    <li><span class="camisa">20</span> Igor Sergeev</li>
+                                    <li><span class="camisa">21</span> Bobur Abdikholikov</li>
+                                    <li><span class="camisa">22</span> Azizbek Turgunboev</li>
+                                    <li><span class="camisa">23</span> Diyor Kholmatov</li>
+                                    <li><span class="camisa">24</span> Abdulla Abdullaev</li>
+                                    <li><span class="camisa">25</span> Khojimat Erkinov</li>
+                                    <li><span class="camisa">26</span> Jasurbek Yakhshiboev</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-k-portugal">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/pt.png"
+                                        alt="Brasão Portugal">
+                                    <h4>Portugal</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Diogo Costa</li>
+                                    <li><span class="camisa">2</span> João Cancelo</li>
+                                    <li><span class="camisa">3</span> Rúben Dias</li>
+                                    <li><span class="camisa">4</span> Pepe</li>
+                                    <li><span class="camisa">5</span> Nuno Mendes</li>
+                                    <li><span class="camisa">6</span> João Palhinha</li>
+                                    <li><span class="camisa">7</span> Cristiano Ronaldo</li>
+                                    <li><span class="camisa">8</span> Bruno Fernandes</li>
+                                    <li><span class="camisa">9</span> Gonçalo Ramos</li>
+                                    <li><span class="camisa">10</span> Bernardo Silva</li>
+                                    <li><span class="camisa">11</span> Rafael Leão</li>
+                                    <li><span class="camisa">12</span> José Sá</li>
+                                    <li><span class="camisa">13</span> Danilo Pereira</li>
+                                    <li><span class="camisa">14</span> António Silva</li>
+                                    <li><span class="camisa">15</span> Diogo Dalot</li>
+                                    <li><span class="camisa">16</span> Vitinha</li>
+                                    <li><span class="camisa">17</span> João Neves</li>
+                                    <li><span class="camisa">18</span> Rúben Neves</li>
+                                    <li><span class="camisa">19</span> João Félix</li>
+                                    <li><span class="camisa">20</span> Diogo Jota</li>
+                                    <li><span class="camisa">21</span> Ricardo Horta</li>
+                                    <li><span class="camisa">22</span> Rui Patrício</li>
+                                    <li><span class="camisa">23</span> Matheus Nunes</li>
+                                    <li><span class="camisa">24</span> Otávio</li>
+                                    <li><span class="camisa">25</span> Gonçalo Inácio</li>
+                                    <li><span class="camisa">26</span> Nelson Semedo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grupo-l" class="grupo-section">
+                    <h3 class="grupo-title">Grupo L</h3>
+                    <div class="row">
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-l-uruguai">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/uy.png"
+                                        alt="Brasão Uruguai">
+                                    <h4>Uruguai</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Fernando Muslera</li>
+                                    <li><span class="camisa">2</span> José Giménez</li>
+                                    <li><span class="camisa">3</span> Diego Godín</li>
+                                    <li><span class="camisa">4</span> Ronald Araújo</li>
+                                    <li><span class="camisa">5</span> Matías Vecino</li>
+                                    <li><span class="camisa">6</span> Rodrigo Bentancur</li>
+                                    <li><span class="camisa">7</span> Nicolás de la Cruz</li>
+                                    <li><span class="camisa">8</span> Facundo Pellistri</li>
+                                    <li><span class="camisa">9</span> Luis Suárez</li>
+                                    <li><span class="camisa">10</span> Giorgian de Arrascaeta</li>
+                                    <li><span class="camisa">11</span> Darwin Núñez</li>
+                                    <li><span class="camisa">12</span> Sebastián Sosa</li>
+                                    <li><span class="camisa">13</span> Guillermo Varela</li>
+                                    <li><span class="camisa">14</span> Lucas Torreira</li>
+                                    <li><span class="camisa">15</span> Federico Valverde</li>
+                                    <li><span class="camisa">16</span> Mathias Olivera</li>
+                                    <li><span class="camisa">17</span> Matías Viña</li>
+                                    <li><span class="camisa">18</span> Maxi Gómez</li>
+                                    <li><span class="camisa">19</span> Sebastián Coates</li>
+                                    <li><span class="camisa">20</span> Facundo Torres</li>
+                                    <li><span class="camisa">21</span> Edinson Cavani</li>
+                                    <li><span class="camisa">22</span> Martín Cáceres</li>
+                                    <li><span class="camisa">23</span> Sergio Rochet</li>
+                                    <li><span class="camisa">24</span> Agustín Canobbio</li>
+                                    <li><span class="camisa">25</span> Manuel Ugarte</li>
+                                    <li><span class="camisa">26</span> José Luis Rodríguez</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-l-chile">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/cl.png"
+                                        alt="Brasão Chile">
+                                    <h4>Chile</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Thomas Gillier</li>
+                                    <li><span class="camisa">2</span> Mauricio Isla</li>
+                                    <li><span class="camisa">3</span> Guillermo Maripán</li>
+                                    <li><span class="camisa">4</span> Igor Lichnovsky</li>
+                                    <li><span class="camisa">5</span> Paulo Díaz</li>
+                                    <li><span class="camisa">6</span> Vicente Pizarro</li>
+                                    <li><span class="camisa">7</span> Lautaro Millán</li>
+                                    <li><span class="camisa">8</span> Felipe Loyola</li>
+                                    <li><span class="camisa">9</span> Alexander Aravena</li>
+                                    <li><span class="camisa">10</span> Lucas Cepeda</li>
+                                    <li><span class="camisa">11</span> Darío Osorio</li>
+                                    <li><span class="camisa">12</span> Lawrence Vigouroux</li>
+                                    <li><span class="camisa">13</span> Benjamín Kuscevic</li>
+                                    <li><span class="camisa">14</span> Ignacio Saavedra</li>
+                                    <li><span class="camisa">15</span> Benjamín Chandía</li>
+                                    <li><span class="camisa">16</span> Gonzalo Tapia</li>
+                                    <li><span class="camisa">17</span> Gabriel Suazo</li>
+                                    <li><span class="camisa">18</span> Rodrigo Echeverría</li>
+                                    <li><span class="camisa">19</span> Maximiliano Gutiérrez</li>
+                                    <li><span class="camisa">20</span> Javier Altamirano</li>
+                                    <li><span class="camisa">21</span> Ian Garguez</li>
+                                    <li><span class="camisa">22</span> Ben Brereton Díaz</li>
+                                    <li><span class="camisa">23</span> Sebastián Mella</li>
+                                    <li><span class="camisa">24</span> Diego Ulloa</li>
+                                    <li><span class="camisa">25</span> Felipe Ogaz</li>
+                                    <li><span class="camisa">26</span> Felipe Faúndez</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-l-marrocos">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ma.png"
+                                        alt="Brasão Marrocos">
+                                    <h4>Marrocos</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Yassine Bounou</li>
+                                    <li><span class="camisa">2</span> Achraf Hakimi</li>
+                                    <li><span class="camisa">3</span> Noussair Mazraoui</li>
+                                    <li><span class="camisa">4</span> Sofyan Amrabat</li>
+                                    <li><span class="camisa">5</span> Nayef Aguerd</li>
+                                    <li><span class="camisa">6</span> Romain Saïss</li>
+                                    <li><span class="camisa">7</span> Hakim Ziyech</li>
+                                    <li><span class="camisa">8</span> Azzedine Ounahi</li>
+                                    <li><span class="camisa">9</span> Abderrazak Hamdallah</li>
+                                    <li><span class="camisa">10</span> Anass Zaroury</li>
+                                    <li><span class="camisa">11</span> Abdelhamid Sabiri</li>
+                                    <li><span class="camisa">12</span> Munir Mohamedi</li>
+                                    <li><span class="camisa">13</span> Ilias Chair</li>
+                                    <li><span class="camisa">14</span> Zakaria Aboukhlal</li>
+                                    <li><span class="camisa">15</span> Selim Amallah</li>
+                                    <li><span class="camisa">16</span> Abde Ezzalzouli</li>
+                                    <li><span class="camisa">17</span> Sofiane Boufal</li>
+                                    <li><span class="camisa">18</span> Jawad El Yamiq</li>
+                                    <li><span class="camisa">19</span> Youssef En-Nesyri</li>
+                                    <li><span class="camisa">20</span> Achraf Dari</li>
+                                    <li><span class="camisa">21</span> Walid Cheddira</li>
+                                    <li><span class="camisa">22</span> Ahmed Reda Tagnaouti</li>
+                                    <li><span class="camisa">23</span> Bilal El Khannous</li>
+                                    <li><span class="camisa">24</span> Badr Benoun</li>
+                                    <li><span class="camisa">25</span> Yahia Attiyat Allah</li>
+                                    <li><span class="camisa">26</span> Yahya Jabrane</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-4 selecao-anchor" id="team-l-costadomarfim">
+                            <div class="selecao-card">
+                                <div class="selecao-header"><img src="https://flagcdn.com/w40/ci.png"
+                                        alt="Brasão Costa do Marfim">
+                                    <h4>Costa do Marfim</h4>
+                                </div>
+                                <h6 class="text-muted">Escalação Base:</h6>
+                                <ul class="escalacao-list">
+                                    <li><span class="camisa">1</span> Yahia Fofana</li>
+                                    <li><span class="camisa">2</span> Ousmane Diomande</li>
+                                    <li><span class="camisa">3</span> Ghislain Konan</li>
+                                    <li><span class="camisa">4</span> Jean Michaël Seri</li>
+                                    <li><span class="camisa">5</span> Wilfried Singo</li>
+                                    <li><span class="camisa">6</span> Seko Fofana</li>
+                                    <li><span class="camisa">7</span> Odilon Kossounou</li>
+                                    <li><span class="camisa">8</span> Franck Kessié</li>
+                                    <li><span class="camisa">9</span> Jonathan Bamba</li>
+                                    <li><span class="camisa">10</span> Karim Konaté</li>
+                                    <li><span class="camisa">11</span> Jean-Philippe Krasso</li>
+                                    <li><span class="camisa">12</span> Willy Boly</li>
+                                    <li><span class="camisa">13</span> Jérémie Boga</li>
+                                    <li><span class="camisa">14</span> Oumar Diakité</li>
+                                    <li><span class="camisa">15</span> Max Gradel</li>
+                                    <li><span class="camisa">16</span> Charles Folly Ayayi</li>
+                                    <li><span class="camisa">17</span> Serge Aurier</li>
+                                    <li><span class="camisa">18</span> Ibrahim Sangaré</li>
+                                    <li><span class="camisa">19</span> Nicolas Pépé</li>
+                                    <li><span class="camisa">20</span> Christian Kouamé</li>
+                                    <li><span class="camisa">21</span> Evan Ndicka</li>
+                                    <li><span class="camisa">22</span> Sébastien Haller</li>
+                                    <li><span class="camisa">23</span> Badra Ali Sangaré</li>
+                                    <li><span class="camisa">24</span> Simon Adingra</li>
+                                    <li><span class="camisa">25</span> Idrissa Doumbia</li>
+                                    <li><span class="camisa">26</span> Ismaël Diallo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chaveamento-ancora" class="mt-5 mb-5 pt-3 selecao-anchor">
+                    <h2 class="text-center mb-4" style="color: #8a1538;">Fase Final (32 Seleções)</h2>
+
+
+                    <div class="bracket-wrapper">
+                        <div class="bracket">
+                            <div class="bracket-col">
+                                <div class="col-title">16-avos</div>
+                                <div class="match-container"
+                                    style="display: flex; flex-direction: column; justify-content: space-around; flex: 1;">
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/br.png"
+                                                alt="Brasil"><span>Brasil</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ir.png"
+                                                alt="Irã"><span>Irã</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/us.png"
+                                                alt="EUA"><span>EUA</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/rs.png"
+                                                alt="Sérvia"><span>Sérvia</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/de.png"
+                                                alt="Alemanha"><span>Alemanha</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/gh.png"
+                                                alt="Gana"><span>Gana</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/pt.png"
+                                                alt="Portugal"><span>Portugal</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/kr.png"
+                                                alt="Coreia do Sul"><span>Coreia do Sul</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ar.png"
+                                                alt="Argentina"><span>Argentina</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/eg.png"
+                                                alt="Egito"><span>Egito</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/nl.png"
+                                                alt="Holanda"><span>Holanda</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ng.png"
+                                                alt="Nigéria"><span>Nigéria</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/fr.png"
+                                                alt="França"><span>França</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/cl.png"
+                                                alt="Chile"><span>Chile</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/it.png"
+                                                alt="Itália"><span>Itália</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ca.png"
+                                                alt="Canadá"><span>Canadá</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bracket-col">
+                                <div class="col-title">Oitavas</div>
+                                <div class="match-container"
+                                    style="display: flex; flex-direction: column; justify-content: space-around; flex: 1;">
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/br.png"
+                                                alt="Brasil"><span>Brasil</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/us.png"
+                                                alt="EUA"><span>EUA</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/de.png"
+                                                alt="Alemanha"><span>Alemanha</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/pt.png"
+                                                alt="Portugal"><span>Portugal</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ar.png"
+                                                alt="Argentina"><span>Argentina</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/nl.png"
+                                                alt="Holanda"><span>Holanda</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/fr.png"
+                                                alt="França"><span>França</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/it.png"
+                                                alt="Itália"><span>Itália</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bracket-col">
+                                <div class="col-title">Quartas</div>
+                                <div class="match-container"
+                                    style="display: flex; flex-direction: column; justify-content: space-around; flex: 1;">
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/br.png"
+                                                alt="Brasil"><span>Brasil</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/de.png"
+                                                alt="Alemanha"><span>Alemanha</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ar.png"
+                                                alt="Argentina"><span>Argentina</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/fr.png"
+                                                alt="França"><span>França</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bracket-col">
+                                <div class="col-title">Semifinal</div>
+                                <div class="match-container"
+                                    style="display: flex; flex-direction: column; justify-content: space-around; flex: 1;">
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/br.png"
+                                                alt="Brasil"><span>Brasil</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ar.png"
+                                                alt="Argentina"><span>Argentina</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bracket-col"
+                                style="flex: 1.5; justify-content: center; display: flex; flex-direction: column;">
+                                <div class="col-title" style="font-size: 1.1rem; margin-bottom: 20px;">Final</div>
+                                <div class="match-box final-box text-center">
+                                    <h5 class="text-warning fw-bold mb-3">GRANDE FINAL</h5>
+                                    <div class="match-team justify-content-center mb-2"><img
+                                            src="https://flagcdn.com/w40/br.png" style="width: 30px;"> <span
+                                            class="fs-5 ms-2">BRASIL</span></div>
+                                    <hr class="my-2">
+                                    <div class="match-team justify-content-center mt-2"><img
+                                            src="https://flagcdn.com/w40/es.png" style="width: 30px;"> <span
+                                            class="fs-5 ms-2">ESPANHA</span></div>
+                                </div>
+                                <div class="col-title mt-5" style="margin-bottom: 20px;">Disputa 3º Lugar</div>
+                                <div class="match-box text-center p-3">
+                                    <div class="match-team justify-content-center"><img
+                                            src="https://flagcdn.com/w40/ar.png"> <span class="ms-2">ARGENTINA</span>
+                                    </div>
+                                    <hr class="my-2">
+                                    <div class="match-team justify-content-center"><img
+                                            src="https://flagcdn.com/w40/gb-eng.png"> <span
+                                            class="ms-2">INGLATERRA</span></div>
+                                </div>
+                            </div>
+
+                            <div class="bracket-col">
+                                <div class="col-title">Semifinal</div>
+                                <div class="match-container"
+                                    style="display: flex; flex-direction: column; justify-content: space-around; flex: 1;">
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/gb-eng.png"
+                                                alt="Inglaterra"><span>Inglaterra</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/es.png"
+                                                alt="Espanha"><span>Espanha</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bracket-col">
+                                <div class="col-title">Quartas</div>
+                                <div class="match-container"
+                                    style="display: flex; flex-direction: column; justify-content: space-around; flex: 1;">
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/gb-eng.png"
+                                                alt="Inglaterra"><span>Inglaterra</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/be.png"
+                                                alt="Bélgica"><span>Bélgica</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/es.png"
+                                                alt="Espanha"><span>Espanha</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/uy.png"
+                                                alt="Uruguai"><span>Uruguai</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bracket-col">
+                                <div class="col-title">Oitavas</div>
+                                <div class="match-container"
+                                    style="display: flex; flex-direction: column; justify-content: space-around; flex: 1;">
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/gb-eng.png"
+                                                alt="Inglaterra"><span>Inglaterra</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/hr.png"
+                                                alt="Croácia"><span>Croácia</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/be.png"
+                                                alt="Bélgica"><span>Bélgica</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ch.png"
+                                                alt="Suíça"><span>Suíça</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/es.png"
+                                                alt="Espanha"><span>Espanha</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ma.png"
+                                                alt="Marrocos"><span>Marrocos</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/uy.png"
+                                                alt="Uruguai"><span>Uruguai</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/sn.png"
+                                                alt="Senegal"><span>Senegal</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bracket-col">
+                                <div class="col-title">16-avos</div>
+                                <div class="match-container"
+                                    style="display: flex; flex-direction: column; justify-content: space-around; flex: 1;">
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/gb-eng.png"
+                                                alt="Inglaterra"><span>Inglaterra</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/pa.png"
+                                                alt="Panamá"><span>Panamá</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/hr.png"
+                                                alt="Croácia"><span>Croácia</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/cm.png"
+                                                alt="Camarões"><span>Camarões</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/be.png"
+                                                alt="Bélgica"><span>Bélgica</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/jp.png"
+                                                alt="Japão"><span>Japão</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ch.png"
+                                                alt="Suíça"><span>Suíça</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/au.png"
+                                                alt="Austrália"><span>Austrália</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/es.png"
+                                                alt="Espanha"><span>Espanha</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/co.png"
+                                                alt="Colômbia"><span>Colômbia</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ma.png"
+                                                alt="Marrocos"><span>Marrocos</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/dk.png"
+                                                alt="Dinamarca"><span>Dinamarca</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/uy.png"
+                                                alt="Uruguai"><span>Uruguai</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/ml.png"
+                                                alt="Mali"><span>Mali</span></div>
+                                    </div>
+                                    <div class="match-box">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/sn.png"
+                                                alt="Senegal"><span>Senegal</span></div>
+                                        <hr class="m-0">
+                                        <div class="match-team"><img src="https://flagcdn.com/w40/mx.png"
+                                                alt="México"><span>México</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
