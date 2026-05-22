@@ -99,6 +99,39 @@ Construção de componentes interativos: botões estilizados, alertas e página 
 
 ---
 
+### Aula 8 - Tabela Periódica
+Página de tabela periódica com layout responsivo e navegação de conteúdo científico.
+
+| | Link |
+|---|---|
+| 📄 Código-fonte | [portfolio/aula-08-tabela-periodica.html](portfolio/aula-08-tabela-periodica.html) |
+| 🌐 Página ao vivo | [22453040.netlify.app/aula-08-tabela-periodica.html](https://22453040.netlify.app/aula-08-tabela-periodica.html) |
+| 📑 Relatório | [relatorios/relatorio-08.pdf](relatorios/relatorio-08.pdf) |
+
+---
+
+### Aula 9 - Fotógrafo
+Portfólio fotográfico com carrosséis, seção de sessões e navegação visual.
+
+| | Link |
+|---|---|
+| 📄 Código-fonte | [portfolio/aula-09-fotografia.html](portfolio/aula-09-fotografia.html) |
+| 🌐 Página ao vivo | [22453040.netlify.app/aula-09-fotografia.html](https://22453040.netlify.app/aula-09-fotografia.html) |
+| 📑 Relatório | [relatorios/relatorio-09.pdf](relatorios/relatorio-09.pdf) |
+
+---
+
+### Aula 10 - Copa do Mundo 2026
+Simulação temática com grupos de seleções, bandeiras e chaveamento final.
+
+| | Link |
+|---|---|
+| 📄 Código-fonte | [portfolio/aula-10-copa.html](portfolio/aula-10-copa.html) |
+| 🌐 Página ao vivo | [22453040.netlify.app/aula-10-copa.html](https://22453040.netlify.app/aula-10-copa.html) |
+| 📑 Relatório | [relatorios/relatorio-10.pdf](relatorios/relatorio-10.pdf) |
+
+---
+
 ## 📑 Relatórios
 
 Todos os relatórios estão disponíveis na pasta [`relatorios/`](relatorios/), formatados conforme normas **ABNT**, e podem ser visualizados diretamente neste repositório.

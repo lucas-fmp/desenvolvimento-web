@@ -315,28 +315,7 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#scrollspy-menu" tabindex="0">
-    <nav style="position: sticky; top: 0; z-index: 1050;">
-        <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-        <ul class="menu" id="menu">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#sobre">Sobre mim</a></li>
-            <li>
-                <a href="index.html#projetos">Projetos</a>
-                <ul class="submenu">
-                    <li><a href="aula-02-listas.html">Aula 2</a></li>
-                    <li><a href="aula-03-menu.html">Aula 3</a></li>
-                    <li><a href="aula-04-cards.html">Aula 4</a></li>
-                    <li><a href="index.html">Aula 5</a></li>
-                    <li><a href="aula-06-login.html">Aula 6</a></li>
-                    <li><a href="aula-08-tabela-periodica.html">Aula 8</a></li>
-                    <li><a href="aula-09-fotografia.html">Aula 9</a></li>
-                    <li><a href="aula-10-copa.html">Aula 10 - Copa do Mundo</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Relatórios</a></li>
-            <li><a href="https://github.com/lucas-fmp/desenvolvimento-web" target="_blank">GitHub ↗</a></li>
-        </ul>
-    </nav>
+    <div id="shared-header"></div>
     <header class="panini-header">
         <div class="container">
             <h1>Copa do Mundo 2026</h1>
@@ -2605,6 +2584,7 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="header.js"></script>
 </body>
 
 </html>

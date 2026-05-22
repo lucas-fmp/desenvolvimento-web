@@ -10,5 +10,8 @@ Relatórios semanais das atividades práticas da disciplina, formatados conforme
 | Aula 4 | Cards, Player de Áudio e Plano de Fundo | *(não realizado)* |
 | Aula 5 | Publicação Online | [relatorio-05.pdf](relatorio-05.pdf) |
 | Aula 6 | Botões, Alertas e Tela de Login | [relatorio-06.pdf](relatorio-06.pdf) |
+| Aula 8 | Tabela Periódica | [relatorio-08.pdf](relatorio-08.pdf) |
+| Aula 9 | Fotógrafo | [relatorio-09.pdf](relatorio-09.pdf) |
+| Aula 10 | Copa do Mundo 2026 | [relatorio-10.pdf](relatorio-10.pdf) |
 
 > Os PDFs podem ser visualizados diretamente no GitHub clicando sobre cada arquivo.

@@ -9,42 +9,7 @@
 </head>
 
 <body>
-    <nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
-        <ul class="menu" id="menu">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#sobre">Sobre mim</a></li>
-            <li>
-                <a href="index.html#projetos">Projetos</a>
-                <ul class="submenu">
-                    <li><a href="aula-02-listas.html">Aula 2 - Listas, Tabelas e Formulários</a></li>
-                    <li><a href="aula-03-menu.html">Aula 3 - Menu, Imagens e Vídeos</a></li>
-                    <li><a href="aula-04-cards.html">Aula 4 - Cards e Player de Áudio</a></li>
-                    <li><a href="index.html">Aula 5 - Hub e Publicação Online</a></li>
-                    <li><a href="aula-06-login.html">Aula 6 - Tela de Login</a></li>
-                    <li><a href="aula-08-tabela-periodica.html">Aula 8 - Tabela Periódica</a></li>
-                    <li><a href="aula-09-fotografia.html">Aula 9 - Fotógrafo</a></li>
-                    <li><a href="aula-10-copa.html">Aula 10 - Copa do Mundo 2026</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Relatórios</a>
-                <ul class="submenu">
-                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-01.pdf" target="_blank">Aula 1 - Introdução ao HTML</a></li>
-                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-02.pdf" target="_blank">Aula 2 - Listas, Tabelas e Formulários</a></li>
-                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-03.pdf" target="_blank">Aula 3 - Menu, Imagens e Vídeos</a></li>
-                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-05.pdf" target="_blank">Aula 5 - Publicação Online</a></li>
-                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-06.pdf" target="_blank">Aula 6 - Botões, Alertas e Login</a></li>
-                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-08.pdf" target="_blank">Aula 8 - Tabela Periódica</a></li>
-                    <li><a href="https://github.com/lucas-fmp/desenvolvimento-web/blob/main/relatorios/relatorio-09.pdf" target="_blank">Aula 9 - Fotógrafo</a></li>
-                    <li><a href="#">Aula 10 - Copa do Mundo (Em breve)</a></li>
-                </ul>
-            </li>
-            <li><a href="https://github.com/lucas-fmp/desenvolvimento-web" target="_blank">GitHub ↗</a></li>
-        </ul>
-    </nav>
+    <div id="shared-header"></div>
     <header>
         <h1>Apresentação</h1>
         <p>Abaixo você confere o conteúdo das aulas de apresentação.</p>
@@ -60,11 +25,7 @@
         <p>Desenvolvido como atividade escolar. © 2026</p>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            document.getElementById('menu').classList.toggle('active');
-        }
-    </script>
+    <script src="header.js"></script>
 </body>
 
 </html>
