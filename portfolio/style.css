@@ -154,6 +154,9 @@ nav {
     left: 0;
     background: white;
     min-width: 290px;
+    max-height: calc(100vh - 80px); /* nunca ultrapassa a tela */
+    overflow-y: auto;              /* scroll suave quando necessário */
+    overscroll-behavior: contain;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
@@ -161,8 +164,18 @@ nav {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     list-style: none;
     border-radius: 0 0 12px 12px;
-    overflow: hidden;
     border-top: 3px solid var(--primary);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(102, 126, 234, 0.4) transparent;
+}
+
+.submenu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.submenu::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.4);
+    border-radius: 4px;
 }
 
 .menu > li:hover .submenu {
@@ -559,6 +572,13 @@ article.card audio {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.04), rgba(240, 147, 251, 0.04));
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none; /* não bloqueia cliques nos filhos */
+    z-index: 0;
+}
+
+.project-card > * {
+    position: relative;
+    z-index: 1; /* garante que conteúdo fica acima do ::after */
 }
 
 .project-card:hover {
@@ -661,10 +681,15 @@ article.card audio {
     background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
     color: white;
     border: none;
+    margin-top: 2.5rem; /* espaço entre o grid de cards e esta seção */
 }
 
 .repo-section h2 {
-    color: white;
+    color: white !important; /* garante visibilidade sobre fundo escuro */
+    background: none !important; /* remove o background-clip que pode obscurecer */
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: white !important;
     border-image: linear-gradient(90deg, var(--accent), var(--primary)) 1;
 }
 
